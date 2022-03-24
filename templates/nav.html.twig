@@ -1,0 +1,89 @@
+
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{{path('app_home')}}"> 
+            <img src="{{asset('img/logo_ecf.png')}}" class="logo">
+
+          </a>
+          <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="toggler-icon top-bar"></span>
+            <span class="toggler-icon middle-bar"></span>
+            <span class="toggler-icon bottom-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end" id="navbarNav">
+            <ul class="navbar-nav">
+              {% if app.user %}
+                    <div class="nav-item last_nav_item">
+                        Bienvenue, {{ app.user.firstname }} 
+                    </div>
+              {% endif %}
+              {% if (is_granted('ROLE_ADMIN'))  %}
+              <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Admin
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Gérant</a></li>
+                            <li><a class="dropdown-item" href="#">Établissement</a></li>
+                            <li><a class="dropdown-item" href="#">Demandes</a></li>
+                    </ul>
+                </li>
+              {% endif %}
+              {% if (is_granted('ROLE_USER'))  %}
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="#">Mes réservations</a>
+                </li>
+              {% endif %}
+              {% if (is_granted('ROLE_GERANT'))  %}
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="#">Mon établissement</a>
+                </li>
+              {% endif %}
+
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">Accueil</a>
+              </li>
+              <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Nos hotels
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">La Rochelle </a></li>
+                            <li><a class="dropdown-item" href="#">Toulouse</a></li>
+                            <li><a class="dropdown-item" href="#">Canne</a></li>
+                            <li><a class="dropdown-item" href="#">Paris</a></li>
+                            <li><a class="dropdown-item" href="#">Rennes</a></li>
+                            <li><a class="dropdown-item" href="#">Strasbourg</a></li>
+                            <li><a class="dropdown-item" href="#">Lyon</a></li>
+                    </ul>
+                </li>
+                 <li class="nav-item">
+                <a class="nav-link" href="#">Nous contacter</a>
+              </li>
+              {% if not app.user %}
+                     <li class="nav-item">
+                         <a class="nav-link" href="{{ path('app_register') }}">S'enregistrer</a>
+                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
+                     </li>
+                {% endif %}
+               {% if app.user %}
+                     <li class="nav-item">
+                        <a class="nav-link btn btn-primary" href="{{ path('app_logout') }}">Déconnexion</a>
+                     </li>
+                {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <main>
+
+  
+
+
+
+      
+
+    

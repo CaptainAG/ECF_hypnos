@@ -1,0 +1,317 @@
+
+@import "custom";
+@import "~bootstrap/scss/bootstrap";
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #ffff;
+    background-color: #0000;
+}
+
+/* ------------------------------------------------------------------------------------------ NAV BAR ------------------------------------------------------------------------------------------------------- */
+.navbar{
+    background-color: #FFFF;
+    
+}
+
+.logo{
+    height: 5rem;
+}
+
+.nav-link{
+    color: #000;
+}
+.last_nav_item{
+    color: #7b7b7b;
+    display: flex;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 25px;
+    
+}
+
+
+
+
+
+
+.navbar-toggler {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    transition: .5s ease-in-out;
+}
+
+.navbar-light .navbar-toggler{
+    border-color: 83A697 !important;
+    color: 83A697 !important;
+}
+
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none !important;
+    border: 0;
+    position: relative;
+}
+
+.navbar-toggler span {
+    margin: 0;
+    padding: 0;
+}
+
+.toggler-icon {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #CCAD00;
+    border-radius: 1px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.middle-bar {
+    margin-top: 0px;
+}
+
+
+/* State when the navbar is collapsed */
+
+.navbar-toggler.collapsed .top-bar {
+    position: absolute;
+    top: 0px;
+    transform: rotate(0deg);
+}
+
+.navbar-toggler.collapsed .middle-bar {
+    opacity: 1;
+    position: absolute;
+    top: 10px;
+    filter: alpha(opacity=100);
+}
+
+.navbar-toggler.collapsed .bottom-bar {
+    position: absolute;
+    top: 20px;
+    transform: rotate(0deg);
+}
+
+/* when navigation is clicked */
+
+.navbar-toggler .top-bar {
+    top: inherit;
+    transform: rotate(135deg);
+}
+
+.navbar-toggler .middle-bar {
+    opacity: 0;
+    top: inherit;
+    filter: alpha(opacity=0);
+}
+
+.navbar-toggler .bottom-bar {
+    top: inherit;
+    transform: rotate(-135deg);
+}
+
+/* Color of 3 lines */
+
+.navbar-toggler.collapsed .toggler-icon {
+    background: #CCAD00;
+}
+
+/* ------------------------------------------------------------------------------------------ ACCUEIL ------------------------------------------------------------------------------------------------------- */
+
+.background{
+    background-color: #000;
+   
+}
+
+.img_1{
+    width: 100%;
+}
+
+.img_2{
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) and (max-width:1023px){
+    .img_accueil_order{
+        position: relative;
+    }
+
+    
+    .img_container{
+        display: flex;
+        justify-content: end;
+    }
+    .img_accueil:nth-child(0n+2){
+        left: 12px;
+        position: absolute;
+        top: 147px;
+        width: 50%;
+    }
+
+    
+
+    .img_1{
+    
+        width: 70%;
+    }
+    .img_2{
+        position: absolute;
+        top: 147px;
+        left: 12px;
+        width: 50%;
+    }
+    
+}
+
+
+@media screen and (min-width: 1024px)and (max-width:1439px){
+    .container-xxl{
+        height: 100%;
+    }
+
+    .row{
+        height: 100%;
+        padding-top: 0px !important;
+    }
+    .text_accueil_order{
+        order: 1;
+    }
+
+    .img_accueil_order{
+        order: 2;
+        position: relative;
+    }
+
+    .img_2{
+        left: -123px;
+        position: absolute;
+        top: 280px;
+        width: 60%;
+        z-index: 100;
+    }
+
+    
+    .background{
+        height: calc(100vh-170px);
+       
+    }
+    
+
+}
+@media screen and  (min-width: 1440px){
+    .container-xxl{
+        height: 100%;
+    }
+
+    .row{
+        height: 100%;
+        padding-top: 0px !important;
+    }
+    .text_accueil_order{
+        order: 1;
+    }
+
+    .img_accueil_order{
+        order: 2;
+        position: relative;
+    }
+
+    .img_2{
+        left: -150px;
+        position: absolute;
+        top: 310px;
+        width: 50%;
+        z-index: 100;
+    }
+
+    .background{
+        height: calc(100vh-170px);
+       
+    }
+}
+
+/* ------------------------------------------------------------------------------------------ REGISTER / LOGIN ------------------------------------------------------------------------------------------------------- */
+
+.background_register_login{
+    background-color: #000;
+    height: 100vh;
+}
+
+
+.balise_centre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.white{
+    background-color: #ffff;
+    height: 60%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_register_login{
+    color: #000;
+}
+
+.form_register_login>form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_register_login>form>input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.form_register_login>form>label{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form_register_login>form>button{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 320px)and (max-width:1023px){
+
+    .background_register_login>.container-xxl{
+        height: 100%;
+    }
+
+}
+
+
+
+/* ------------------------------------------------------------------------------------------ FOOTER ------------------------------------------------------------------------------------------------------- */
+
+
+
+footer>div>p{
+    color: #000 !important;
+}
+
+footer>div>p>a{
+    color: #000 !important;
+}
+
