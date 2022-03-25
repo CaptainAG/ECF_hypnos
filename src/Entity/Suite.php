@@ -27,8 +27,6 @@ class Suite
     #[ORM\Column(type: 'float')]
     private $price;
 
-    #[ORM\OneToOne(inversedBy: 'suite', targetEntity: Gallerie::class, cascade: ['persist', 'remove'])]
-    private $galerie;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
     private $isReserved;
@@ -36,9 +34,16 @@ class Suite
     #[ORM\ManyToMany(targetEntity: Reservation::class, mappedBy: 'suite')]
     private $reservations;
 
+    #[ORM\ManyToOne(targetEntity: Hotel::class, inversedBy: 'suite')]
+    private $hotel;
+
+    #[ORM\OneToMany(mappedBy: 'Suite', targetEntity: Gallerie::class)]
+    private $galerie;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
+        $this->galerie = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,17 +99,7 @@ class Suite
         return $this;
     }
 
-    public function getGalerie(): ?Gallerie
-    {
-        return $this->galerie;
-    }
-
-    public function setGalerie(?Gallerie $galerie): self
-    {
-        $this->galerie = $galerie;
-
-        return $this;
-    }
+    
 
     public function getIsReserved(): ?bool
     {
@@ -140,6 +135,48 @@ class Suite
     {
         if ($this->reservations->removeElement($reservation)) {
             $reservation->removeSuite($this);
+        }
+
+        return $this;
+    }
+
+    public function getHotel(): ?Hotel
+    {
+        return $this->hotel;
+    }
+
+    public function setHotel(?Hotel $hotel): self
+    {
+        $this->hotel = $hotel;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Gallerie>
+     */
+    public function getGalerie(): Collection
+    {
+        return $this->galerie;
+    }
+
+    public function addGalerie(Gallerie $galerie): self
+    {
+        if (!$this->galerie->contains($galerie)) {
+            $this->galerie[] = $galerie;
+            $galerie->setSuite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGalerie(Gallerie $galerie): self
+    {
+        if ($this->galerie->removeElement($galerie)) {
+            // set the owning side to null (unless already changed)
+            if ($galerie->getSuite() === $this) {
+                $galerie->setSuite(null);
+            }
         }
 
         return $this;

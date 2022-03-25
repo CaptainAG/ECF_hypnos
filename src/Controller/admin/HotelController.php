@@ -5,6 +5,7 @@ namespace App\Controller\admin;
 use App\Entity\Hotel;
 use App\Form\HotelType;
 use App\Repository\HotelRepository;
+use App\Repository\SuiteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,10 +53,13 @@ class HotelController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_admin_hotel_show', methods: ['GET'])]
-    public function show(Hotel $hotel): Response
+    public function show(Hotel $hotel, SuiteRepository $suiteRepository): Response
     {
+        $suite= $suiteRepository->getByIdHotel();
+
         return $this->render('hotel/show.html.twig', [
             'hotel' => $hotel,
+            'suites' => $suite,
         ]);
     }
 

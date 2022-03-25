@@ -20,7 +20,6 @@ class UserController extends AbstractController
     {
         $user=$userRepository->gerant();
 
-       dd($user);
         
         return $this->render('user/index.html.twig', [
             'users' => $user,

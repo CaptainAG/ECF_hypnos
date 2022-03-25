@@ -16,8 +16,10 @@ class Gallerie
     #[ORM\Column(type: 'string', length: 255)]
     private $image;
 
-    #[ORM\OneToOne(mappedBy: 'galerie', targetEntity: Suite::class, cascade: ['persist', 'remove'])]
-    private $suite;
+    #[ORM\ManyToOne(targetEntity: Suite::class, inversedBy: 'galerie')]
+    private $Suite;
+
+   
 
     public function getId(): ?int
     {
@@ -38,23 +40,14 @@ class Gallerie
 
     public function getSuite(): ?Suite
     {
-        return $this->suite;
+        return $this->Suite;
     }
 
-    public function setSuite(?Suite $suite): self
+    public function setSuite(?Suite $Suite): self
     {
-        // unset the owning side of the relation if necessary
-        if ($suite === null && $this->suite !== null) {
-            $this->suite->setGalerie(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($suite !== null && $suite->getGalerie() !== $this) {
-            $suite->setGalerie($this);
-        }
-
-        $this->suite = $suite;
+        $this->Suite = $Suite;
 
         return $this;
     }
+
 }

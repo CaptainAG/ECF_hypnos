@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Hotel;
 use App\Entity\Suite;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
@@ -43,6 +44,19 @@ class SuiteRepository extends ServiceEntityRepository
         if ($flush) {
             $this->_em->flush();
         }
+    }
+
+
+    public function findByHotelID($id){
+       
+        $query= $this->createQueryBuilder('d')
+            ->select('d')
+            ->where('d.hotel = :hotel')
+            ->setParameter('hotel', $id );
+            
+        ;
+        
+        return $query->getQuery()->getResult();
     }
 
     // /**

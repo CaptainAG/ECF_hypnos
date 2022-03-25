@@ -8,17 +8,18 @@
         <div class="alert alert-success" role="alert">{{ message }}</div>
     {% endfor %}
     
-    <div class="background">
+    <div class="background_hotel">
         <div class="container-xxl">
             <div class="row">
             {% for hotel in hotels %}
                    <div class="col-md-6 col-lg-4 col-xl-3 py-5"> 
                         <div class="card  rounded-3" style="width: 18rem;">
-                            <img src="" class="card-img-top " alt="...">
+                            <img src="{{asset('img/hotel-lux.jpeg')}}" class="card-img-top " alt="...">
                             <div class="card-body">
-                                <h5 class="card-title text-center">{{hotel.name}}</h5>
-                                <div class="card-text overflow-hidden my-3 text-card">{{hotel.city}}</div> 
-                                <a href="{{path('hotel_show',{'id': hotel.id})}}"  class="btn btn-primary btn-card">Voir l'hotel</a>
+                                <h5 class="card-title text-center title_hotel">{{hotel.name}}</h5>
+                                <div class"button_hotel">
+                                    <a href="{{path('hotel_show',{'id': hotel.id})}}"  class="btn btn-primary btn-card">Voir l'hotel</a>
+                                </div>
                             </div>
                         </div>
                     </div>

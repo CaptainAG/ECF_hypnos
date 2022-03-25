@@ -43,7 +43,7 @@ class UserType extends AbstractType
                     return $hotel->getName();
                    },
                 'label' => '  ',
-                'placeholder' => '--- Choisir un hotel ---',
+                'placeholder' => '- Choisir un hotel -',
             ])
             
         ;
