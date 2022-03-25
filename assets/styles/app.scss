@@ -9,6 +9,14 @@ body {
     color: #ffff;
     background-color: #0000;
 }
+th{
+    color: #ffff;
+}
+
+td{
+    color: #ffff;
+}
+
 
 /* ------------------------------------------------------------------------------------------ NAV BAR ------------------------------------------------------------------------------------------------------- */
 .navbar{
@@ -128,6 +136,12 @@ body {
     background: #CCAD00;
 }
 
+/* ------------------------------------------------------------------------------------------ ADMIN ------------------------------------------------------------------------------------------------------- */
+
+#row_admin{
+    align-items: center;
+}
+
 /* ------------------------------------------------------------------------------------------ ACCUEIL ------------------------------------------------------------------------------------------------------- */
 
 .background{
@@ -242,6 +256,27 @@ body {
     }
 }
 
+/* ------------------------------------------------------------------------------------------ HOTEL ------------------------------------------------------------------------------------------------------- */
+
+
+.pagination_hotel>nav>.pagination{
+    margin-bottom: 0px !important;
+}
+
+
+.pagination_hotel>nav>ul>li>.page-link{
+    background-color: #000;
+    color: #CCAD00;
+    border-color: #CCAD00;
+}
+
+
+.pagination_hotel>nav>.pagination>.page-item.disabled>.page-link{
+    background-color: #000 !important;
+    color: #CCAD00 !important;
+    border-color: #CCAD00 !important;
+}
+
 /* ------------------------------------------------------------------------------------------ REGISTER / LOGIN ------------------------------------------------------------------------------------------------------- */
 
 .background_register_login{
@@ -301,6 +336,83 @@ body {
 
 }
 
+/* ------------------------------------------------------------------------------------------ FORM------------------------------------------------------------------------------------------------------- */
+.background_form{
+    background-color: #000;
+    height: calc(100vh-170px);
+}
+
+
+.balise_centre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.white{
+    background-color: #ffff;
+    height: 60%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.class_form{
+    color: #000;
+}
+
+.class_form>form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.class_form>form>input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.class_form>form>textarea{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.class_form>form>select{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.class_form>form>button{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 320px)and (max-width:1023px){
+
+    .background_form>.container-xxl{
+        height: 100%;
+    }
+
+}
+
+.text_area_hotel{
+    height: 8rem;
+    
+}
+
+@media screen and (min-width: 768px){
+
+    .text_area_hotel{
+        height: 8rem;
+        width: 20rem !important;
+    }
+
+}
 
 
 /* ------------------------------------------------------------------------------------------ FOOTER ------------------------------------------------------------------------------------------------------- */

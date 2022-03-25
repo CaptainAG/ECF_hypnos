@@ -45,6 +45,25 @@ class HotelRepository extends ServiceEntityRepository
         }
     }
 
+    public function getPaginatedHotels($page, $limit){
+        $query= $this->createQueryBuilder('h')
+            ->orderBy('h.id')
+            ->setFirstResult(($page * $limit) - $limit)
+            ->setMaxResults($limit)
+        ;
+
+        return $query->getQuery()->getResult();
+    }  
+    
+    
+    public function getTotalHotels(){
+        $query= $this->createQueryBuilder('h')
+            ->select('COUNT(h)')
+        ;
+
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
     // /**
     //  * @return Hotel[] Returns an array of Hotel objects
     //  */

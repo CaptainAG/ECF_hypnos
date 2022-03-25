@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    {%  include 'nav.html.twig' %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success" role="alert">{{ message }}</div>
+    {% endfor %}
+    
+    <div class="background">
+        <div class="container-xxl">
+            <div class="row" id="row_admin">
+                   <div class="col-md-6 col-lg-4  py-5"> 
+                        <div class="card  rounded-3" style="width: 18rem;">
+                            <img src="" class="card-img-top " alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Gérant</h5>  
+                                <a href="{{path('app_admin_user')}}"  class="btn btn-primary btn-card">Gestion des gérants</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4  py-5"> 
+                        <div class="card  rounded-3" style="width: 18rem;">
+                            <img src="" class="card-img-top " alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Hotels</h5>  
+                                <a href="{{path('app_admin_hotel')}}"  class="btn btn-primary btn-card">Gestion des hôtels</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4  py-5"> 
+                        <div class="card  rounded-3" style="width: 18rem;">
+                            <img src="" class="card-img-top " alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Demande</h5>  
+                                <a href=""  class="btn btn-primary btn-card">Gestion des démandes</a>
+                            </div>
+                        </div>
+                    </div>
+         </div>
+        </div>
+
+    </div>
+    
+    
+    {%  include 'footer.html.twig' %}
+{% endblock %}

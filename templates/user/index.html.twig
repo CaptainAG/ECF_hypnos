@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+{%  include 'nav.html.twig' %}
+ <div class="background">
+    <div class="container-xxl">
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-primary my-5" href="{{ path('app_admin_user_new') }}">Ajouter</a>
+        </div>
+        <div class="table-responsive">
+             <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Hôtel</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.firstname }}</td>
+                        <td>{{ user.email }}</td>
+                        <td> {{ user.hotel.name }}  </td>
+                        
+                        <td class="d-flex">
+                            <a class="btn btn-warning mx-2" href="{{ path('app_admin_user_edit', {'id': user.id}) }}">Modifier</a>
+                            {{ include('user/_delete_form.html.twig') }}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="8">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+   
+    {%  include 'footer.html.twig' %}
+{% endblock %}
