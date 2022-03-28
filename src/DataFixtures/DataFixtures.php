@@ -6,6 +6,8 @@ use App\Entity\Gallerie;
 use App\Entity\Hotel;
 use App\Entity\User;
 use App\Entity\Suite;
+use App\Entity\Sujet;
+use App\Entity\Demande;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
@@ -43,7 +45,7 @@ class DataFixtures extends Fixture
                     
                     ->setHotel($hotel1)
 
-                    ->setImageName($faker->imageUrl(500,400, 'suite'));
+                    ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
 
                      
 
@@ -72,7 +74,7 @@ class DataFixtures extends Fixture
                     ->setIsReserved($faker->randomElement(['0','1']))
                     
                     ->setHotel($hotel2)
-                    ->setImageName($faker->imageUrl(500,400, 'suite'));
+                    ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
             $manager->persist($suite);
         }
@@ -97,7 +99,7 @@ class DataFixtures extends Fixture
                     ->setIsReserved($faker->randomElement(['0','1']))
                     
                     ->setHotel($hotel3)
-                    ->setImageName($faker->imageUrl(500,400, 'suite'));
+                    ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
 
             $manager->persist($suite);
                      
@@ -122,7 +124,7 @@ class DataFixtures extends Fixture
                     ->setIsReserved($faker->randomElement(['0','1']))
                     
                     ->setHotel($hotel4)
-                    ->setImageName($faker->imageUrl(500,400, 'suite'));
+                    ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
 
             $manager->persist($suite);
@@ -152,7 +154,7 @@ class DataFixtures extends Fixture
                     ->setIsReserved($faker->randomElement(['0','1']))
                     
                     ->setHotel($hotel5)
-                    ->setImageName($faker->imageUrl(500,400, 'suite'));
+                    ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
 
             $manager->persist($suite);
@@ -181,7 +183,7 @@ class DataFixtures extends Fixture
                     ->setIsReserved($faker->randomElement(['0','1']))
                     
                     ->setHotel($hotel6)
-                    ->setImageName($faker->imageUrl(500,400, 'suite'));
+                    ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
 
             $manager->persist($suite);
@@ -211,7 +213,7 @@ class DataFixtures extends Fixture
                     
                     ->setHotel($hotel7)
 
-                    ->setImageName($faker->imageUrl(500,400, 'suite'));
+                    ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
 
             $manager->persist($suite);
@@ -342,6 +344,92 @@ class DataFixtures extends Fixture
 
 
         $manager->persist($user);
+
+        
+
+
+        //Sujet
+        $sujet1= new Sujet();
+        $sujet1->setDescription('Je souhaite poser une réclamation');
+
+        $manager->persist($sujet1);
+
+        $sujet2= new Sujet();
+        $sujet2->setDescription('Je souhaite commander un service supplémentaire');
+
+        $manager->persist($sujet2);
+
+        $sujet3= new Sujet();
+        $sujet3->setDescription('Je souhaite en savoir plus sur une suite');
+
+        $manager->persist($sujet3);
+
+        $sujet4= new Sujet();
+        $sujet4->setDescription('J’ai un souci avec cette application');
+
+        $manager->persist($sujet4);
+
+
+        //Demande 
+        for($i =1; $i <= 5; $i++){
+            
+            $demande = new Demande();
+            $demande ->setName($faker->lastname())
+            ->setFirstname($faker->firstName())
+                    ->setEmail($faker->email)
+                    ->setSujet($sujet1)
+                    ->setMessage($faker->paragraph());
+                     
+
+            $manager->persist($demande);
+                     
+        }
+
+        for($i =1; $i <= 5; $i++){
+            
+            $demande = new Demande();
+            $demande ->setName($faker->lastname())
+                    ->setFirstname($faker->firstName())
+                    ->setEmail($faker->email)
+                    ->setSujet($sujet2)
+                    ->setMessage($faker->paragraph());
+                     
+
+            $manager->persist($demande);
+                     
+        }
+
+        for($i =1; $i <= 5; $i++){
+            
+            $demande = new Demande();
+            $demande ->setName($faker->lastname())
+                    ->setFirstname($faker->firstName())
+                    ->setEmail($faker->email)
+                    ->setSujet($sujet3)
+                    ->setMessage($faker->paragraph());
+                     
+
+            $manager->persist($demande);
+                     
+        }
+
+        for($i =1; $i <= 5; $i++){
+            
+            $demande = new Demande();
+            $demande ->setName($faker->lastname())
+                    ->setFirstname($faker->firstName())
+                    ->setEmail($faker->email)
+                    ->setSujet($sujet4)
+                    ->setMessage($faker->paragraph());
+                     
+
+            $manager->persist($demande);
+                     
+        }
+
+
+
+
 
         $manager->flush();
     }

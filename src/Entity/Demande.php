@@ -25,6 +25,9 @@ class Demande
     #[ORM\ManyToOne(targetEntity: Sujet::class, inversedBy: 'demandes')]
     private $sujet;
 
+    #[ORM\Column(type: 'string', length: 500)]
+    private $message;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Demande
     public function setSujet(?Sujet $sujet): self
     {
         $this->sujet = $sujet;
+
+        return $this;
+    }
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(string $message): self
+    {
+        $this->message = $message;
 
         return $this;
     }
