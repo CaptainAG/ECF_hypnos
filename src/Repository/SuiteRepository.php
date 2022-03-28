@@ -59,6 +59,30 @@ class SuiteRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
+    public function getPaginatedSuites($page, $limit,$id){
+        $query= $this->createQueryBuilder('s')
+            ->select('s')
+            ->where('s.hotel = :hotel')
+            ->setParameter('hotel', $id )
+            ->orderBy('s.id')
+            ->setFirstResult(($page * $limit) - $limit)
+            ->setMaxResults($limit)
+        ;
+
+        return $query->getQuery()->getResult();
+    }  
+    
+    
+    public function getTotalSuites($id){
+        $query= $this->createQueryBuilder('s')
+            ->select('COUNT(s)')
+            ->where('s.hotel = :hotel')
+            ->setParameter('hotel', $id )
+        ;
+
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
     // /**
     //  * @return Suite[] Returns an array of Suite objects
     //  */

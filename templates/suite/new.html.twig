@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Hotel{% endblock %}
+{% block title %}New Suite{% endblock %}
 
 {% block body %}
  {%  include 'nav.html.twig' %}
@@ -10,13 +10,13 @@
                 <div class="white">
                     <div class="class_form">
                          {{ form_start(form) }}
-                        {{ form_widget(form.name) }}
-                        {{ form_widget(form.city) }}
-                        {{ form_widget(form.adress) }}
+                        {{ form_widget(form.title) }}
                          {{ form_widget(form.description) }}
+                         {{ form_widget(form.price) }}
+                        {{ form_widget(form.imageFile) }}
                           
                         <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
-                         <a class="btn btn-secondary" href="{{ path('app_admin_hotel') }}">Retour</a>
+                         <a class="btn btn-secondary" href="{{ path('app_gerant_suite_index') }}">Retour</a>
                          {{ form_end(form) }}
                         
                     </div>
@@ -31,4 +31,3 @@
     
 {%  include 'footer.html.twig' %}
 {% endblock %}
-

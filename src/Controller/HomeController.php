@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Hotel;
+use App\Entity\Suite;
 use App\Repository\HotelRepository;
 use App\Repository\SuiteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -41,6 +42,14 @@ class HomeController extends AbstractController
         return $this->render('hotel/show.html.twig', [
             'hotel' => $hotel,
             'suites' => $suite,
+        ]);
+    }
+
+    #[Route('/suite/{id}', name: 'app_suite_show', methods: ['GET'])]
+    public function showSuite(Suite $suite): Response
+    {
+        return $this->render('suite/show.html.twig', [
+            'suite' => $suite,
         ]);
     }
     

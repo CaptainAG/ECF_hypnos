@@ -36,18 +36,24 @@
                 </li>
               {% endif %}
               {% if (is_granted('ROLE_GERANT'))  %}
+              
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="#">Mon établissement</a>
+                    <a class="nav-link " aria-current="page" href="{{path('hotel_show',{'id': app.user.hotel.id})}}">Mon établissement</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="{{path('app_gerant_suite_index')}}">Mes suites</a>
                 </li>
               {% endif %}
 
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="{{path('app_home')}}" >Accueil</a>
               </li>
+              
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="{{path('app_hotel')}}" >Nos hotels</a>
               </li>
-                 <li class="nav-item">
+        
+              <li class="nav-item">
                 <a class="nav-link" href="#">Nous contacter</a>
               </li>
               {% if not app.user %}

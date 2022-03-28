@@ -9,6 +9,7 @@ use App\Entity\Suite;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
+use App\Service\UploaderHelper;
 
 
 class DataFixtures extends Fixture
@@ -16,7 +17,8 @@ class DataFixtures extends Fixture
     
     public function load(ObjectManager $manager): void
     {
-        $faker = Factory::create();('fr_FR');
+        $faker = Factory::create('fr_FR');
+        
         
       
         //HOTEL1
@@ -35,19 +37,20 @@ class DataFixtures extends Fixture
             
             $suite = new Suite();
             $suite ->setTitle($faker->sentence())
-                    
-                    ->setImage($faker->imageURL(500, 400, " Suite "))
-                    
                     ->setDescription($faker->paragraph(2))
-                    
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
                     
-                    ->setHotel($hotel1);
+                    ->setHotel($hotel1)
+
+                    ->setImageName($faker->imageUrl(500,400, 'suite'));
+
                      
 
             $manager->persist($suite);
         }
+
+        
 
         //HOTEL2
         $hotel2= new Hotel();
@@ -64,17 +67,13 @@ class DataFixtures extends Fixture
             
             $suite = new Suite();
             $suite ->setTitle($faker->sentence())
-                    
-                    ->setImage($faker->imageURL(500, 400, 'suite'))
-                    
                     ->setDescription($faker->paragraph(2))
-                    
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
                     
-                    ->setHotel($hotel2);
+                    ->setHotel($hotel2)
+                    ->setImageName($faker->imageUrl(500,400, 'suite'));
                      
-
             $manager->persist($suite);
         }
 
@@ -93,18 +92,15 @@ class DataFixtures extends Fixture
             
             $suite = new Suite();
             $suite ->setTitle($faker->sentence())
-                    
-                    ->setImage($faker->imageURL(500, 400, 'suite'))
-                    
                     ->setDescription($faker->paragraph(2))
-                    
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
                     
-                    ->setHotel($hotel3);
-                     
+                    ->setHotel($hotel3)
+                    ->setImageName($faker->imageUrl(500,400, 'suite'));
 
             $manager->persist($suite);
+                     
         }
 
         //HOTEL4
@@ -114,27 +110,27 @@ class DataFixtures extends Fixture
         $hotel4 ->setAdress('Place de l\'Hôtel-de-Ville');
         $hotel4 ->setDescription('Duplexque isdem diebus acciderat malum, quod et Theophilum insontem atrox interceperat casus, et Serenianus dignus exsecratione cunctorum, innoxius, modo non reclamante publico vigore, discessit.');
 
+        $manager->persist($hotel4);
+
         //Création des suites hotel 4
         for($i =1; $i <= 5; $i++){
             
             $suite = new Suite();
             $suite ->setTitle($faker->sentence())
-                    
-                    ->setImage($faker->imageURL(500, 400, 'suite'))
-                    
                     ->setDescription($faker->paragraph(2))
-                    
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
                     
-                    ->setHotel($hotel4);
+                    ->setHotel($hotel4)
+                    ->setImageName($faker->imageUrl(500,400, 'suite'));
                      
 
             $manager->persist($suite);
+                     
         }
         
 
-        $manager->persist($hotel4);
+       
 
         //HOTEL5
         $hotel5= new Hotel();
@@ -151,18 +147,18 @@ class DataFixtures extends Fixture
             
             $suite = new Suite();
             $suite ->setTitle($faker->sentence())
-                    
-                    ->setImage($faker->imageURL(500, 400, 'suite'))
-                    
                     ->setDescription($faker->paragraph(2))
-                    
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
                     
-                    ->setHotel($hotel5);
+                    ->setHotel($hotel5)
+                    ->setImageName($faker->imageUrl(500,400, 'suite'));
                      
 
             $manager->persist($suite);
+                     
+
+            
         }
 
         //HOTEL6
@@ -180,18 +176,18 @@ class DataFixtures extends Fixture
             
             $suite = new Suite();
             $suite ->setTitle($faker->sentence())
-                    
-                    ->setImage($faker->imageURL(500, 400, 'suite'))
-                    
                     ->setDescription($faker->paragraph(2))
-                    
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
                     
-                    ->setHotel($hotel6);
+                    ->setHotel($hotel6)
+                    ->setImageName($faker->imageUrl(500,400, 'suite'));
                      
 
             $manager->persist($suite);
+                     
+
+            
         }
 
         //HOTEL7
@@ -209,15 +205,13 @@ class DataFixtures extends Fixture
             
             $suite = new Suite();
             $suite ->setTitle($faker->sentence())
-                    
-                    ->setImage($faker->imageURL(500, 400, 'suite'))
-                    
                     ->setDescription($faker->paragraph(2))
-                    
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
                     
-                    ->setHotel($hotel7);
+                    ->setHotel($hotel7)
+
+                    ->setImageName($faker->imageUrl(500,400, 'suite'));
                      
 
             $manager->persist($suite);

@@ -55,11 +55,11 @@ class HotelController extends AbstractController
     #[Route('/{id}', name: 'app_admin_hotel_show', methods: ['GET'])]
     public function show(Hotel $hotel, SuiteRepository $suiteRepository): Response
     {
-        $suite= $suiteRepository->getByIdHotel();
+        
 
         return $this->render('hotel/show.html.twig', [
             'hotel' => $hotel,
-            'suites' => $suite,
+            
         ]);
     }
 

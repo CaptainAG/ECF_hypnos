@@ -273,11 +273,17 @@ td{
     position: relative;
 }
 
-.container_header>h1{
+.container_header>div:nth-child(2){
     position: absolute;
     top: 14rem;
-    left: 50vh;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
     z-index: 100;
+}
+
+.container_header>div:nth-child(2)>h1{
     color: #000;
 }
 
@@ -357,6 +363,60 @@ td{
     color: #CCAD00 !important;
     border-color: #CCAD00 !important;
 }
+/* ------------------------------------------------------------------------------------------ SUITE --------------
+
+/* -----Page show -----*/
+
+.img_show_suite{
+    height: 30rem;
+    width: 100%;
+}
+
+.img_show_suite>img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+
+}
+
+.container_show_suite{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 9rem;
+}
+
+.container_show_suite>.div_show_suite{
+    
+    width: 60%;
+    background: white;
+    position: absolute;
+    top: 28rem;
+    padding: 1rem;
+}
+
+.container_show_suite>.div_show_suite>.div_show_suite_title>p,.container_show_suite>.div_show_suite>.div_show_suite_description>p{
+    color: #000;
+}
+
+.div_show_suite>div>p{
+    margin-bottom: 0;
+}
+
+.div_show_suite_price>p:nth-child(1){
+   color: #CCAD00;
+}
+
+.div_show_suite_price>p:nth-child(2){
+    font-size: x-small;
+    color: #000;
+ }
+
+ .spacer{
+     height: 11rem;
+ }
+
+/* -----Page New / Edit -----*/
+
 
 /* ------------------------------------------------------------------------------------------ REGISTER / LOGIN ------------------------------------------------------------------------------------------------------- */
 
@@ -481,7 +541,7 @@ td{
 
 }
 
-.text_area_hotel{
+.text_area_form{
     height: 8rem;
     
 }

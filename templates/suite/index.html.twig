@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suite index{% endblock %}
+
+{% block body %}
+ {%  include 'nav.html.twig' %}
+ <div class="background">
+    <div class="container-xxl">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center  my-5">
+                <a class="btn btn-primary " href="{{ path('app_gerant_suite_new') }}">Ajouter</a>
+            </div>
+            <div class="pagination_hotel d-flex align-items-center  my-5">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination"> 
+                        <li class="page-item {{ (page == 1) ? 'disabled' : '' }}">
+                            <a class="page-link" href="{{ (page > 1) ? '?page=' ~ (page - 1) : ''}}'" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {% set pages = (total / limit)|round(0,'ceil') %}
+                        {% for item in 1.. pages %}
+                            <li class="page-item {{ (page == item) ? 'active' : ''}}">
+                                <a class="page-link" href="?page={{item}}">{{item}} </a>
+                            </li>
+                                
+                        {% endfor %}
+                        <li class="page-item {{ (page == pages) ? 'disabled' : '' }}">
+                            <a class="page-link" href="{{ (page < pages) ? '?page=' ~ (page + 1) : ''}}'"aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="table-responsive">
+             <table class="table">
+                <thead>
+                    <tr>
+                <th>Titre</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for suite in suites %}
+            <tr>
+                <td>{{ suite.title }}</td>
+                <td>{{ suite.imageFile }}</td>
+                <td>{{ suite.description }}</td>
+                <td>{{ suite.price }}</td>
+                <td>
+                     <div class="d-flex">
+                        <a class="btn btn-secondary mx-2" href="{{ path('app_gerant_suite_show', {'id': suite.id}) }}">Voir</a>
+                        <a class="btn btn-warning mx-2" href="{{ path('app_gerant_suite_edit', {'id': suite.id}) }}">Modifier</a>
+                        {{ include('suite/_delete_form.html.twig') }}
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   
+
+        {%  include 'footer.html.twig' %}
+{% endblock %}
