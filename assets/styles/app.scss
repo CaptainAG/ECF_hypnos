@@ -417,6 +417,40 @@ td{
 
 /* -----Page New / Edit -----*/
 
+/* ------------------------------------------------------------------------------------------ DEMANDE------------------------------------------------------------------------------------------------------- */
+/* -----Page show -----*/
+
+.background_demande{
+    background-color: #000;
+    min-height: calc(100vh-170px);
+}
+
+.background_demande>.container-xxl{
+    min-height: calc(100vh-170px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.balise_centre>.white_demande{
+    background-color: #ffff;
+    height: 60%;
+    margin: 2rem;
+    width: 90%;
+    padding: 1rem;
+}
+
+.white_demande>div{
+    height: 100%;
+}
+
+.white_demande>div>*{
+    color: #000;
+}
+
 
 /* ------------------------------------------------------------------------------------------ REGISTER / LOGIN ------------------------------------------------------------------------------------------------------- */
 
@@ -526,6 +560,7 @@ td{
 .class_form>form>select{
     margin-top: 10px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .class_form>form>button{

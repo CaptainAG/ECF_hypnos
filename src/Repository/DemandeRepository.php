@@ -45,6 +45,25 @@ class DemandeRepository extends ServiceEntityRepository
         }
     }
 
+    public function getPaginatedDemandes($page, $limit){
+        $query= $this->createQueryBuilder('h')
+            ->orderBy('h.CreatedAt','desc')
+            ->setFirstResult(($page * $limit) - $limit)
+            ->setMaxResults($limit)
+        ;
+
+        return $query->getQuery()->getResult();
+    }  
+    
+    
+    public function getTotalDemandes(){
+        $query= $this->createQueryBuilder('h')
+            ->select('COUNT(h)')
+        ;
+
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
     // /**
     //  * @return Demande[] Returns an array of Demande objects
     //  */

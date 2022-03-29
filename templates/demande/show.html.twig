@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demande{% endblock %}
+
+{% block body %}
+{%  include 'nav.html.twig' %}
+     <div class="background_demande">
+        <div class="container-xxl">
+            <div class="balise_centre">
+                <div class="white_demande">
+                    <div class="d-flex flex-column justify-content-between">
+                        <div class="row my-3">
+                            <div class="col-lg-6">
+                                <p class="text-center">{{demande.name}} </p>
+                            </div>
+                           <div class="col-lg-6">
+                                <p class="text-center">{{demande.firstname}} </p>
+                            </div>
+                        </div>
+                         <div class="row my-3">
+                            <div class="col-lg-6">
+                                <p class="text-center">{{demande.email}} </p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p class="text-center">{{demande.sujet.description}} </p>
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                             <p>{{demande.message}} </p>
+                        </div>
+                        <div class="row my-3">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <a class="btn btn-primary" href="{{ path('app_admin_demande') }}"> Retour</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    <div>
+{%  include 'footer.html.twig' %}
+{% endblock %}

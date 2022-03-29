@@ -28,6 +28,12 @@ class Demande
     #[ORM\Column(type: 'string', length: 500)]
     private $message;
 
+    #[ORM\Column(type: 'datetime')]
+    private $CreatedAt;
+
+    #[ORM\Column(type: 'boolean')]
+    private $processed;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +95,30 @@ class Demande
     public function setMessage(string $message): self
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTime
+    {
+        return $this->CreatedAt;
+    }
+
+    public function setCreatedAt(\DateTime $CreatedAt): self
+    {
+        $this->CreatedAt = $CreatedAt;
+
+        return $this;
+    }
+
+    public function getProcessed(): ?bool
+    {
+        return $this->processed;
+    }
+
+    public function setProcessed(bool $processed): self
+    {
+        $this->processed = $processed;
 
         return $this;
     }

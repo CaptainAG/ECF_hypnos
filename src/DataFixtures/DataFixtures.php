@@ -378,6 +378,8 @@ class DataFixtures extends Fixture
             ->setFirstname($faker->firstName())
                     ->setEmail($faker->email)
                     ->setSujet($sujet1)
+                    ->setCreatedAt($faker->dateTimeBetween('-10 week', '-1 week'))
+                    ->setProcessed($faker->randomElement(['0','1']))
                     ->setMessage($faker->paragraph());
                      
 
@@ -392,6 +394,8 @@ class DataFixtures extends Fixture
                     ->setFirstname($faker->firstName())
                     ->setEmail($faker->email)
                     ->setSujet($sujet2)
+                    ->setCreatedAt($faker->dateTimeBetween('-10 week', '-1 week'))
+                    ->setProcessed($faker->randomElement(['0','1']))
                     ->setMessage($faker->paragraph());
                      
 
@@ -406,6 +410,8 @@ class DataFixtures extends Fixture
                     ->setFirstname($faker->firstName())
                     ->setEmail($faker->email)
                     ->setSujet($sujet3)
+                    ->setCreatedAt($faker->dateTimeBetween('-10 week', '-1 week'))
+                    ->setProcessed($faker->randomElement(['0','1']))
                     ->setMessage($faker->paragraph());
                      
 
@@ -420,6 +426,8 @@ class DataFixtures extends Fixture
                     ->setFirstname($faker->firstName())
                     ->setEmail($faker->email)
                     ->setSujet($sujet4)
+                    ->setCreatedAt($faker->dateTimeBetween('-10 week', '-1 week'))
+                    ->setProcessed($faker->randomElement(['0','1']))
                     ->setMessage($faker->paragraph());
                      
 

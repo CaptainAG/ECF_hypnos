@@ -2,19 +2,17 @@
 
 namespace App\Form;
 
-use App\Entity\Hotel;
-use App\Entity\User;
-use App\Repository\HotelRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Demande;
+use App\Entity\Sujet;
 use Symfony\Component\Form\AbstractType;
-
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class UserType extends AbstractType
+class DemandeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -31,28 +29,28 @@ class UserType extends AbstractType
                 'attr' => ['placeholder' => 'Email'],
                 'label'=> ''
             ])
-            ->add('password',PasswordType::class,[
-                'attr' => ['placeholder' => 'Mot de passe'],
-                'label'=> '',
-                'required' => false,
+            ->add('message',TextareaType::class,[
+                'attr' => [
+                    'placeholder' => 'Écrivez votre message',
+                    'class'=> 'text_area_form'
+            ],      
+                'label'=> ''
             ])
-           
-            ->add('hotel',EntityType::class,[
-                'class' => Hotel::class,
-                'choice_label' => function($hotel){
-                    return $hotel->getName();
+            ->add('sujet',EntityType::class,[
+                'class' => Sujet::class,
+                'choice_label' => function($sujet){
+                    return $sujet->getDescription();
                    },
                 'label' => '  ',
-                'placeholder' => '- Choisir un hotel -',
+                'placeholder' => '- Choisir un sujet -',
             ])
-            
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Demande::class,
         ]);
     }
 }

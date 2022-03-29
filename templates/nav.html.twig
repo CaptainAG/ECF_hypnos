@@ -26,7 +26,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{{path('app_admin_user')}}">Gérant</a></li>
                             <li><a class="dropdown-item" href="{{path('app_admin_hotel')}}">Établissement</a></li> 
-                            <li><a class="dropdown-item" href="#">Demandes</a></li>
+                            <li><a class="dropdown-item" href="{{path('app_admin_demande')}}">Demandes</a></li>
                     </ul>
                 </li>
               {% endif %}
@@ -54,7 +54,7 @@
               </li>
         
               <li class="nav-item">
-                <a class="nav-link" href="#">Nous contacter</a>
+                <a class="nav-link" href="{{path('app_demande_new')}}">Nous contacter</a>
               </li>
               {% if not app.user %}
                      <li class="nav-item">
