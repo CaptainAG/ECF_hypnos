@@ -18,6 +18,8 @@ td{
 }
 
 
+
+
 /* ------------------------------------------------------------------------------------------ NAV BAR ------------------------------------------------------------------------------------------------------- */
 .navbar{
     background-color: #FFFF;
@@ -142,11 +144,27 @@ td{
     align-items: center;
 }
 
+.col-admin{
+    background-color: #000;
+    min-height: calc(100vh - 170px);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+.col-admin > .container-xxl {
+    height: calc(100% - 6rem);
+}
+
+
 /* ------------------------------------------------------------------------------------------ ACCUEIL ------------------------------------------------------------------------------------------------------- */
 
-.background{
+.col-home{
     background-color: #000;
-   
+    min-height: calc(100vh - 170px);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+.col-home > .container-xxl {
+    height: calc(100% - 6rem);
 }
 
 .img_1{
@@ -158,6 +176,9 @@ td{
 }
 
 @media screen and (min-width: 768px) and (max-width:1023px){
+
+    
+
     .img_accueil_order{
         position: relative;
     }
@@ -167,10 +188,11 @@ td{
         display: flex;
         justify-content: end;
     }
+
     .img_accueil:nth-child(0n+2){
-        left: 12px;
         position: absolute;
         top: 147px;
+        left: 12px;
         width: 50%;
     }
 
@@ -180,10 +202,11 @@ td{
     
         width: 70%;
     }
+
     .img_2{
         position: absolute;
-        top: 147px;
         left: 12px;
+        top: 147px;
         width: 50%;
     }
     
@@ -191,14 +214,8 @@ td{
 
 
 @media screen and (min-width: 1024px)and (max-width:1439px){
-    .container-xxl{
-        height: 100%;
-    }
+    
 
-    .row{
-        height: 100%;
-        padding-top: 0px !important;
-    }
     .text_accueil_order{
         order: 1;
     }
@@ -209,30 +226,19 @@ td{
     }
 
     .img_2{
-        left: -123px;
+        
         position: absolute;
-        top: 280px;
+        left: -60px;
+        bottom: -60px;
         width: 60%;
         z-index: 100;
     }
 
     
-    .background{
-        height: calc(100vh-170px);
-       
-    }
-    
 
 }
 @media screen and  (min-width: 1440px){
-    .container-xxl{
-        height: 100%;
-    }
-
-    .row{
-        height: 100%;
-        padding-top: 0px !important;
-    }
+    
     .text_accueil_order{
         order: 1;
     }
@@ -243,25 +249,21 @@ td{
     }
 
     .img_2{
-        left: -150px;
         position: absolute;
-        top: 310px;
+        bottom: -110px;
+        left: -110px;
         width: 50%;
         z-index: 100;
-    }
-
-    .background{
-        height: calc(100vh-170px);
-       
     }
 }
 
 /* ------------------------------------------------------------------------------------------ HOTEL ------------------------------------------------------------------------------------------------------- */
-.background_hotel{
+.col-hotel{
     background-color: #000;
-    height: 100%;
+    min-height: calc(100vh - 170px);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
-
 
 /* -----Page show -----*/
 .title_hotel{
@@ -310,7 +312,7 @@ td{
     .title_content_card_suite,.description_content_card_suite{
         margin-top: 1rem
     }
-};
+}
     
 
 .footer_card_suite>a{
@@ -323,7 +325,7 @@ td{
     .footer_card_suite>a,.footer_card_suite>div{
         margin-top: 1rem
     }
-};
+}
     
 
 
@@ -417,22 +419,21 @@ td{
 
 /* -----Page New / Edit -----*/
 
+.col-suite{
+    background-color: #000;
+    min-height: calc(100vh - 170px);
+}
+
 /* ------------------------------------------------------------------------------------------ DEMANDE------------------------------------------------------------------------------------------------------- */
 /* -----Page show -----*/
 
-.background_demande{
+.col-demande{
     background-color: #000;
-    min-height: calc(100vh-170px);
-}
-
-.background_demande>.container-xxl{
-    min-height: calc(100vh-170px);
-    display: flex;
-    justify-content: center;
+    min-height: calc(100vh - 170px);
     align-items: center;
+    display: flex;
+    
 }
-
-
 
 
 .balise_centre>.white_demande{
@@ -451,12 +452,24 @@ td{
     color: #000;
 }
 
+/* ------------------------------------------------------------------------------------------ RESERVATION------------------------------------------------------------------------------------------------------- */
+.col-reservation{
+    background-color: #000;
+    min-height: calc(100vh - 170px);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+.col-reservation > .container-xxl {
+    height: calc(100% - 6rem);
+}
 
 /* ------------------------------------------------------------------------------------------ REGISTER / LOGIN ------------------------------------------------------------------------------------------------------- */
 
-.background_register_login{
+.col_register_login{
     background-color: #000;
     height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -505,16 +518,22 @@ td{
 
 @media screen and (min-width: 320px)and (max-width:1023px){
 
-    .background_register_login>.container-xxl{
-        height: 100%;
-    }
+   
 
 }
 
 /* ------------------------------------------------------------------------------------------ FORM------------------------------------------------------------------------------------------------------- */
-.background_form{
+.col-form{
     background-color: #000;
-    height: calc(100vh-170px);
+    min-height: calc(100vh - 170px);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display:flex;
+    align-items: center;
+}
+
+.col-form > .container-xxl {
+    height: calc(100% - 6rem);
 }
 
 
@@ -563,6 +582,10 @@ td{
     text-align: center;
 }
 
+#reservation_suite,#demande_sujet{
+    width: 100%;
+}
+
 .class_form>form>button{
     margin-top: 10px;
     margin-bottom: 10px;
@@ -570,9 +593,7 @@ td{
 
 @media screen and (min-width: 320px)and (max-width:1023px){
 
-    .background_form>.container-xxl{
-        height: 100%;
-    }
+   
 
 }
 

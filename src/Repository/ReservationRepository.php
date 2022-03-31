@@ -45,6 +45,54 @@ class ReservationRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByUserID($id){
+       
+        $query= $this->createQueryBuilder('d')
+            ->select('d')
+            ->where('d.user = :user')
+            ->setParameter('user', $id );
+            
+        ;
+        
+        return $query->getQuery()->getResult();
+    }
+
+    public function getPaginatedReservations($page, $limit,$id){
+        $query= $this->createQueryBuilder('r')
+            ->select('r')
+            ->where('r.user = :user')
+            ->setParameter('user', $id )
+            ->orderBy('r.startDate', 'desc')
+            ->setFirstResult(($page * $limit) - $limit)
+            ->setMaxResults($limit)
+        ;
+
+        return $query->getQuery()->getResult();
+    }  
+    
+    
+    public function getTotalReservations($id){
+        $query= $this->createQueryBuilder('r')
+            ->select('COUNT(r)')
+            ->where('r.user = :user')
+            ->setParameter('user', $id )
+        ;
+
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
+    /*
+
+    public function free($suite,$start,$end){
+        $query= $this->createQueryBuilder('d')
+        ->select('d')
+        ->where('d.suite = :suite')
+        ->andWhere('d.startDate BETWEEN :start AND :end')
+        ->setParameter('suite', $suite)
+        ->setParameter('start', $start)
+        ->setParameter('end', $end);
+    }
+    */
     // /**
     //  * @return Reservation[] Returns an array of Reservation objects
     //  */

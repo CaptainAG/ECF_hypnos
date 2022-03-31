@@ -27,8 +27,6 @@ class Hotel
     #[ORM\Column(type: 'string', length: 255)]
     private $description;
 
-    #[ORM\OneToMany(mappedBy: 'hotel', targetEntity: Reservation::class)]
-    private $reservations;
 
     #[ORM\OneToOne(mappedBy: 'hotel', targetEntity: User::class, cascade: ['persist', 'remove'])]
     private $user;
@@ -95,36 +93,7 @@ class Hotel
         return $this;
     }
 
-    /**
-     * @return Collection<int, Reservation>
-     */
-    public function getReservations(): Collection
-    {
-        return $this->reservations;
-    }
-
-    public function addReservation(Reservation $reservation): self
-    {
-        if (!$this->reservations->contains($reservation)) {
-            $this->reservations[] = $reservation;
-            $reservation->setHotel($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReservation(Reservation $reservation): self
-    {
-        if ($this->reservations->removeElement($reservation)) {
-            // set the owning side to null (unless already changed)
-            if ($reservation->getHotel() === $this) {
-                $reservation->setHotel(null);
-            }
-        }
-
-        return $this;
-    }
-
+    
     public function getUser(): ?User
     {
         return $this->user;
@@ -175,5 +144,10 @@ class Hotel
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

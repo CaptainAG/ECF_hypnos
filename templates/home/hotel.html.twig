@@ -8,12 +8,12 @@
         <div class="alert alert-success" role="alert">{{ message }}</div>
     {% endfor %}
     
-    <div class="background_hotel">
+    <div class="col-hotel py-5">
         <div class="container-xxl">
-            <div class="row">
+            <div class="row g-3 g-xl-5">
             {% for hotel in hotels %}
-                   <div class="col-md-6 col-lg-4 col-xl-3 py-5"> 
-                        <div class="card  rounded-3" style="width: 18rem;">
+                   <div class="col-md-6 col-lg-4 col-xl-3"> 
+                        <div class="card">
                             <img src="{{asset('img/hotel-lux.jpeg')}}" class="card-img-top " alt="...">
                             <div class="card-body">
                                 <h5 class="card-title text-center title_hotel">{{hotel.name}}</h5>

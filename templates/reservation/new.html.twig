@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Reservation{% endblock %}
+
+{% block body %}
+ {%  include 'nav.html.twig' %}
+     <div class="col-form">
+        <div class="container-xxl">
+            <div class="balise_centre">
+                <div class="white">
+                    <div class="class_form">
+                        {{ form_start(form) }}
+                        {{ form_widget(form.hotel) }}
+                       {{ form_widget(form.suite) }}  
+                       {{ form_label(form.startDate) }}
+                        {{ form_widget(form.startDate) }}
+                        {{ form_label(form.endDate) }}
+                        {{ form_widget(form.endDate) }}
+                        {% if (is_granted('ROLE_USER'))  %}
+                        <button class="btn btn-primary">{{ button_label|default('Réserver') }}</button>
+                         {%  else  %}
+                         <a  href="{{ path('app_login') }}"> Connectez vous pour réserver cette suite </a>
+                         {% endif %}
+                        {{ form_end(form) }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div>
+
+
+   
+
+    
+{%  include 'footer.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+   {#
+    <script>
+        window.onload = () => {
+            
+            let hotel = document.querySelector("#reservation_hotel");
+            hotel.addEventListener("change", function(){
+                let form = this.closest("form");
+                let data = this.name + "=" + this.value;
+                
+               fetch(form.action,{
+                   method: form.getAttribute("method"),
+                   body: data,
+                   headers: {
+                       "Content-Type" : "application/x-www-form-urlencoded ; charsert:utf-8"
+                   }
+               })
+                .then(response => response.text())
+                .then(html => {
+                    console.log(html)
+                    let content = document.createElement("html");
+                    content.innerHTML = html;
+                    let nouveauSelect = content.querySelector("#reservation_suite");
+                    document.querySelector("#reservation_suite").replaceWith(nouveauSelect);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+            });
+        }
+    </script>
+    #}
+{% endblock %}

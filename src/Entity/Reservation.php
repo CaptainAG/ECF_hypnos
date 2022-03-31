@@ -15,11 +15,6 @@ class Reservation
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\ManyToOne(targetEntity: Hotel::class, inversedBy: 'reservations')]
-    private $hotel;
-
-    #[ORM\ManyToMany(targetEntity: Suite::class, inversedBy: 'reservations')]
-    private $suite;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'reservations')]
     private $user;
@@ -30,51 +25,22 @@ class Reservation
     #[ORM\Column(type: 'date')]
     private $endDate;
 
-    public function __construct()
-    {
-        $this->suite = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(targetEntity: Suite::class, inversedBy: 'reservations')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $suite;
+
+    
+
+   
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getHotel(): ?Hotel
-    {
-        return $this->hotel;
-    }
+    
 
-    public function setHotel(?Hotel $hotel): self
-    {
-        $this->hotel = $hotel;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Suite>
-     */
-    public function getSuite(): Collection
-    {
-        return $this->suite;
-    }
-
-    public function addSuite(Suite $suite): self
-    {
-        if (!$this->suite->contains($suite)) {
-            $this->suite[] = $suite;
-        }
-
-        return $this;
-    }
-
-    public function removeSuite(Suite $suite): self
-    {
-        $this->suite->removeElement($suite);
-
-        return $this;
-    }
+    
 
     public function getUser(): ?User
     {
@@ -111,4 +77,30 @@ class Reservation
 
         return $this;
     }
+
+    public function getSuite(): ?Suite
+    {
+        return $this->suite;
+    }
+
+    public function setSuite(?Suite $suite): self
+    {
+        $this->suite = $suite;
+
+        return $this;
+    }
+
+   
+
+    
+
+    
+
+    
+    
+
+   
+
+
+    
 }

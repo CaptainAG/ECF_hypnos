@@ -4,7 +4,7 @@
 
 {% block body %}
 {%  include 'nav.html.twig' %}
- <div class="background">
+ <div class="col-suite">
     <div class="container-xxl">
             <div class="img_show_suite py-5">
                 <img src="{{asset('/images/suite/' ~ suite.imageName )}}" alt="" class="">
@@ -21,7 +21,7 @@
                         <p class="text-center">{{ suite.price }}  €</p>
                         <p class="text-center">La nuit </p>
                         <div class="d-flex justify-content-center my-4">
-                            <a class="btn btn-primary" href=""> Réserver </a>
+                            <a class="btn btn-primary" href="{{path('app_reservation_new')}}"> Réserver </a>
                         </div>
                     </div>
                 </div>

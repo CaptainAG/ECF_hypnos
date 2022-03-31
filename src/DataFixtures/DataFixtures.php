@@ -8,10 +8,11 @@ use App\Entity\User;
 use App\Entity\Suite;
 use App\Entity\Sujet;
 use App\Entity\Demande;
+use App\Entity\Reservation;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
-use App\Service\UploaderHelper;
+
 
 
 class DataFixtures extends Fixture
@@ -38,7 +39,7 @@ class DataFixtures extends Fixture
         for($i =1; $i <= 5; $i++){
             
             $suite = new Suite();
-            $suite ->setTitle($faker->sentence())
+            $suite ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
@@ -68,7 +69,7 @@ class DataFixtures extends Fixture
         for($i =1; $i <= 5; $i++){
             
             $suite = new Suite();
-            $suite ->setTitle($faker->sentence())
+            $suite ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
@@ -93,7 +94,7 @@ class DataFixtures extends Fixture
         for($i =1; $i <= 5; $i++){
             
             $suite = new Suite();
-            $suite ->setTitle($faker->sentence())
+            $suite ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
@@ -118,7 +119,7 @@ class DataFixtures extends Fixture
         for($i =1; $i <= 5; $i++){
             
             $suite = new Suite();
-            $suite ->setTitle($faker->sentence())
+            $suite ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
@@ -148,7 +149,7 @@ class DataFixtures extends Fixture
         for($i =1; $i <= 5; $i++){
             
             $suite = new Suite();
-            $suite ->setTitle($faker->sentence())
+            $suite ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
@@ -177,7 +178,7 @@ class DataFixtures extends Fixture
         for($i =1; $i <= 5; $i++){
             
             $suite = new Suite();
-            $suite ->setTitle($faker->sentence())
+            $suite ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
@@ -206,7 +207,7 @@ class DataFixtures extends Fixture
         for($i =1; $i <= 5; $i++){
             
             $suite = new Suite();
-            $suite ->setTitle($faker->sentence())
+            $suite ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
@@ -334,16 +335,20 @@ class DataFixtures extends Fixture
         $manager->persist($user);
 
         //USER
-        $user= new User();
-        $user ->setEmail('elodie@test.fr');
-        $user ->setRoles(['ROLE_USER']);
-        $user ->setPassword('$2y$10$Htv/9eNxF6Rk8leKDFYcHO28oCi5wRFnies8sGwut0fPAvJc05Ph.');
-        $user ->setName('J');
-        $user ->setFirstname('elodie');
-        $user ->setIsVerified('1');
 
-
-        $manager->persist($user);
+        for($i =1; $i <= 5; $i++){
+            
+            $user= new User();
+            $user ->setEmail($faker->email);
+            $user ->setRoles(['ROLE_USER']);
+            $user ->setPassword('$2y$10$Htv/9eNxF6Rk8leKDFYcHO28oCi5wRFnies8sGwut0fPAvJc05Ph.');
+            $user ->setName($faker->lastname());
+            $user ->setFirstname($faker->firstName());
+            $user ->setIsVerified('1');
+    
+    
+            $manager->persist($user);
+        }
 
         
 
@@ -435,6 +440,7 @@ class DataFixtures extends Fixture
                      
         }
 
+       
 
 
 
