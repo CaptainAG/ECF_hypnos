@@ -23,7 +23,25 @@ class DataFixtures extends Fixture
         $faker = Factory::create('fr_FR');
         
         
-      
+      //USER
+
+        for($i =1; $i <= 5; $i++){
+                
+            $user= new User();
+            $user ->setEmail($faker->email);
+            $user ->setRoles(['ROLE_USER']);
+            $user ->setPassword('$2y$10$Htv/9eNxF6Rk8leKDFYcHO28oCi5wRFnies8sGwut0fPAvJc05Ph.');
+            $user ->setName($faker->lastname());
+            $user ->setFirstname($faker->firstName());
+            $user ->setIsVerified('1');
+
+
+            $manager->persist($user);
+
+            $this->addReference('user'.$i , $user);
+        }
+
+
         //HOTEL1
         $hotel1= new Hotel();
         $hotel1 ->setName('hypnos La Rochelle');
@@ -35,11 +53,13 @@ class DataFixtures extends Fixture
 
         $manager->persist($hotel1);
 
+        $this->addReference('hotel1', $hotel1);
+        
         //Création des suites hotel 1 
         for($i =1; $i <= 5; $i++){
             
-            $suite = new Suite();
-            $suite ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
+            $suite1 = new Suite();
+            $suite1 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
@@ -50,9 +70,37 @@ class DataFixtures extends Fixture
 
                      
 
-            $manager->persist($suite);
+            $manager->persist($suite1);
+
+            $this->addReference('suite1'.$i, $suite1);
+
+            for($j =1; $j <= 3; $j++){
+                $galerie= new Gallerie();
+                $galerie->setImage($faker->image('public/images/suite',500,400, 'suite',false))
+                        ->setSuite($suite1);
+
+                $manager->persist($galerie);
+            }
+
+            
         }
 
+        //Création de réservation 
+        for($i =1; $i <= 5; $i++){
+            $reservation1= new Reservation();
+
+            
+
+            $reservation1->setUser($this->getReference('user'.$i))
+                        ->setSuite($this->getReference('suite1'.$i))
+                        ->setHotel($this->getReference('hotel1'))
+                        ->setStartDate($faker->dateTimeBetween('-1 year','-6 months'))
+                        ->setEndDate($faker->dateTimeBetween('-6 months', '+1 year'));
+            
+            $manager->persist($reservation1);
+        }
+
+        
         
 
         //HOTEL2
@@ -65,11 +113,13 @@ class DataFixtures extends Fixture
 
         $manager->persist($hotel2);
 
+        $this->addReference('hotel2', $hotel2);
+        
         //Création des suites hotel 2
         for($i =1; $i <= 5; $i++){
             
-            $suite = new Suite();
-            $suite ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
+            $suite2 = new Suite();
+            $suite2 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
@@ -77,7 +127,33 @@ class DataFixtures extends Fixture
                     ->setHotel($hotel2)
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
-            $manager->persist($suite);
+            $manager->persist($suite2);
+            $this->addReference('suite2'.$i, $suite2);
+
+            for($j =1; $j <= 3; $j++){
+                $galerie= new Gallerie();
+                $galerie->setImage($faker->image('public/images/suite',500,400, 'suite',false))
+                        ->setSuite($suite2);
+
+                $manager->persist($galerie);
+            }
+
+            
+        }
+
+        //Création de réservation 
+        for($i =1; $i <= 5; $i++){
+            $reservation2= new Reservation();
+
+            
+
+            $reservation2->setUser($this->getReference('user'.$i))
+                        ->setSuite($this->getReference('suite2'.$i))
+                        ->setHotel($this->getReference('hotel2'))
+                        ->setStartDate($faker->dateTimeBetween('-6 months','+1 year'))
+                        ->setEndDate($faker->dateTimeBetween('+1 year', '+2 year'));
+            
+            $manager->persist($reservation2);
         }
 
         //HOTEL3
@@ -90,11 +166,13 @@ class DataFixtures extends Fixture
 
         $manager->persist($hotel3);
 
-        //Création des suites hotel 3
+        $this->addReference('hotel3', $hotel3);
+
+         //Création des suites hotel 3
         for($i =1; $i <= 5; $i++){
             
-            $suite = new Suite();
-            $suite ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
+            $suite3 = new Suite();
+            $suite3 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
@@ -102,8 +180,33 @@ class DataFixtures extends Fixture
                     ->setHotel($hotel3)
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
 
-            $manager->persist($suite);
-                     
+            $manager->persist($suite3);
+            $this->addReference('suite3'.$i, $suite3);
+
+            for($j =1; $j <= 3; $j++){
+                $galerie= new Gallerie();
+                $galerie->setImage($faker->image('public/images/suite',500,400, 'suite',false))
+                        ->setSuite($suite3);
+
+                $manager->persist($galerie);
+            }
+
+            
+        }
+
+        //Création de réservation 
+        for($i =1; $i <= 5; $i++){
+            $reservation3= new Reservation();
+
+            
+
+            $reservation3->setUser($this->getReference('user'.$i))
+                        ->setSuite($this->getReference('suite3'.$i))
+                        ->setHotel($this->getReference('hotel3'))
+                        ->setStartDate($faker->dateTimeBetween('-1 year','-6 months'))
+                        ->setEndDate($faker->dateTimeBetween('-6 months', '+1 year'));
+            
+            $manager->persist($reservation3);
         }
 
         //HOTEL4
@@ -115,11 +218,14 @@ class DataFixtures extends Fixture
 
         $manager->persist($hotel4);
 
+        $this->addReference('hotel4', $hotel4);
+
+        
         //Création des suites hotel 4
         for($i =1; $i <= 5; $i++){
             
-            $suite = new Suite();
-            $suite ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
+            $suite4 = new Suite();
+            $suite4 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
@@ -128,8 +234,33 @@ class DataFixtures extends Fixture
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
 
-            $manager->persist($suite);
-                     
+            $manager->persist($suite4);
+            $this->addReference('suite4'.$i, $suite4);
+
+            for($j =1; $j <= 3; $j++){
+                $galerie= new Gallerie();
+                $galerie->setImage($faker->image('public/images/suite',500,400, 'suite',false))
+                        ->setSuite($suite4);
+
+                $manager->persist($galerie);
+            }
+
+            
+        }
+
+        //Création de réservation 
+        for($i =1; $i <= 5; $i++){
+            $reservation4= new Reservation();
+
+            
+
+            $reservation4->setUser($this->getReference('user'.$i))
+                        ->setSuite($this->getReference('suite4'.$i))
+                        ->setHotel($this->getReference('hotel4'))
+                        ->setStartDate($faker->dateTimeBetween('-6 months','+1 year'))
+                        ->setEndDate($faker->dateTimeBetween('+1 year', '+2 year'));
+            
+            $manager->persist($reservation4);
         }
         
 
@@ -145,11 +276,13 @@ class DataFixtures extends Fixture
 
         $manager->persist($hotel5);
 
+        $this->addReference('hotel5', $hotel5);
+
         //Création des suites hotel 5
         for($i =1; $i <= 5; $i++){
             
-            $suite = new Suite();
-            $suite ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
+            $suite5 = new Suite();
+            $suite5 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
@@ -158,10 +291,33 @@ class DataFixtures extends Fixture
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
 
-            $manager->persist($suite);
-                     
+            $manager->persist($suite5);
+            $this->addReference('suite5'.$i, $suite5);
+
+            for($j =1; $j <= 3; $j++){
+                $galerie= new Gallerie();
+                $galerie->setImage($faker->image('public/images/suite',500,400, 'suite',false))
+                        ->setSuite($suite5);
+
+                $manager->persist($galerie);
+            }
 
             
+        }
+
+        //Création de réservation 
+        for($i =1; $i <= 5; $i++){
+            $reservation5= new Reservation();
+
+            
+
+            $reservation5->setUser($this->getReference('user'.$i))
+                        ->setSuite($this->getReference('suite5'.$i))
+                        ->setHotel($this->getReference('hotel5'))
+                        ->setStartDate($faker->dateTimeBetween('-1 year','-6 months'))
+                        ->setEndDate($faker->dateTimeBetween('-6 months', '+1 year'));
+            
+            $manager->persist($reservation5);
         }
 
         //HOTEL6
@@ -174,11 +330,14 @@ class DataFixtures extends Fixture
 
         $manager->persist($hotel6);
 
+        $this->addReference('hotel6', $hotel6);
+
+        
         //Création des suites hotel 6
         for($i =1; $i <= 5; $i++){
             
-            $suite = new Suite();
-            $suite ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
+            $suite6 = new Suite();
+            $suite6 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
@@ -187,10 +346,33 @@ class DataFixtures extends Fixture
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
 
-            $manager->persist($suite);
-                     
+            $manager->persist($suite6);
+            $this->addReference('suite6'.$i, $suite6);
+
+            for($j =1; $j <= 3; $j++){
+                $galerie= new Gallerie();
+                $galerie->setImage($faker->image('public/images/suite',500,400, 'suite',false))
+                        ->setSuite($suite6);
+
+                $manager->persist($galerie);
+            }
 
             
+        }
+
+        //Création de réservation 
+        for($i =1; $i <= 5; $i++){
+            $reservation6= new Reservation();
+
+            
+
+            $reservation6->setUser($this->getReference('user'.$i))
+                        ->setSuite($this->getReference('suite6'.$i))
+                        ->setHotel($this->getReference('hotel6'))
+                        ->setStartDate($faker->dateTimeBetween('-6 months','+1 year'))
+                        ->setEndDate($faker->dateTimeBetween('+1 year', '+2 year'));
+            
+            $manager->persist($reservation6);
         }
 
         //HOTEL7
@@ -203,11 +385,14 @@ class DataFixtures extends Fixture
 
         $manager->persist($hotel7);
 
+        $this->addReference('hotel7', $hotel7);
+
+        
         //Création des suites hotel 7
         for($i =1; $i <= 5; $i++){
             
-            $suite = new Suite();
-            $suite ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
+            $suite7 = new Suite();
+            $suite7 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
                     ->setIsReserved($faker->randomElement(['0','1']))
@@ -217,22 +402,37 @@ class DataFixtures extends Fixture
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
 
-            $manager->persist($suite);
+            $manager->persist($suite7);
+            $this->addReference('suite7'.$i, $suite7);
+
+            for($j =1; $j <= 3; $j++){
+                $galerie= new Gallerie();
+                $galerie->setImage($faker->image('public/images/suite',500,400, 'suite',false))
+                        ->setSuite($suite7);
+
+                $manager->persist($galerie);
+            }
+
+            
         }
 
-        
-        
-         //Création de la galerie photo 
-         for($i =1; $i <= 35; $i++){
-            $galerie = new Gallerie();
-            $galerie ->setImage($faker->imageURL(360, 360, 'suite'))
-                    ->setSuite($faker->randomElement([$suite]));
-                    
-                    
-                    
+        //Création de réservation 
+        for($i =1; $i <= 5; $i++){
+            $reservation7= new Reservation();
 
-            $manager->persist($galerie);
+            
+
+            $reservation7->setUser($this->getReference('user'.$i))
+                        ->setSuite($this->getReference('suite7'.$i))
+                        ->setHotel($this->getReference('hotel7'))
+                        ->setStartDate($faker->dateTimeBetween('-6 months','+1 year'))
+                        ->setEndDate($faker->dateTimeBetween('+1 year', '+2 year'));
+            
+            $manager->persist($reservation7);
         }
+        
+        
+        
 
         //ADMIN
         $user= new User();
@@ -334,21 +534,7 @@ class DataFixtures extends Fixture
 
         $manager->persist($user);
 
-        //USER
-
-        for($i =1; $i <= 5; $i++){
-            
-            $user= new User();
-            $user ->setEmail($faker->email);
-            $user ->setRoles(['ROLE_USER']);
-            $user ->setPassword('$2y$10$Htv/9eNxF6Rk8leKDFYcHO28oCi5wRFnies8sGwut0fPAvJc05Ph.');
-            $user ->setName($faker->lastname());
-            $user ->setFirstname($faker->firstName());
-            $user ->setIsVerified('1');
-    
-    
-            $manager->persist($user);
-        }
+        
 
         
 
