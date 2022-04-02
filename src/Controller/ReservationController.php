@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 #[Route('/reservation')]
 class ReservationController extends AbstractController
 {
@@ -36,6 +37,50 @@ class ReservationController extends AbstractController
         ]);
     }
 
+    #[Route('/verif', name: 'app_reservation_verif', methods: ['GET', 'POST'])]
+    public function verif(ReservationRepository $reservationRepository): Response
+    {
+       
+        
+        if(!empty($_POST['suite']) && !empty($_POST['startDate']) && !empty($_POST['endDate']) ){
+           
+            $suite= $_POST['suite'] ;
+            $startDate= $_POST['startDate'];
+            $endDate= $_POST['endDate'];
+            
+            
+            
+            $result= $reservationRepository->disponible($suite,$startDate,$endDate);
+
+            $r=count($result);
+
+            if($r < 1 ){
+                
+                return $this->json([
+                    'code' =>200,
+                    'status' => 'success',
+                    'message' => 'Suite disponible'
+                ],200);
+                
+            }else{
+                return $this->json([
+                    'code' =>200,
+                    'status' => 'error',
+                    'message' => 'Suite indisponible'
+                ],200);
+            
+            }
+        }else{
+            return $this->json([
+                'code' =>200,
+                'message' => 'Veillez remplir les champs '
+            ],200);
+        }
+
+
+        
+    }
+
     #[Route('/new', name: 'app_reservation_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ReservationRepository $reservationRepository,): Response
     {
@@ -58,30 +103,7 @@ class ReservationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_reservation_show', methods: ['GET'])]
-    public function show(Reservation $reservation): Response
-    {
-        return $this->render('reservation/show.html.twig', [
-            'reservation' => $reservation,
-        ]);
-    }
 
-    #[Route('/{id}/edit', name: 'app_reservation_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Reservation $reservation, ReservationRepository $reservationRepository): Response
-    {
-        $form = $this->createForm(ReservationType::class, $reservation);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $reservationRepository->add($reservation);
-            return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('reservation/edit.html.twig', [
-            'reservation' => $reservation,
-            'form' => $form,
-        ]);
-    }
 
     #[Route('/{id}', name: 'app_reservation_delete', methods: ['POST'])]
     public function delete(Request $request, Reservation $reservation, ReservationRepository $reservationRepository): Response
@@ -92,8 +114,6 @@ class ReservationController extends AbstractController
 
         return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
     }
-
     
-
-
+    
 }

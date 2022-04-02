@@ -34,10 +34,14 @@ class Hotel
     #[ORM\OneToMany(mappedBy: 'hotel', targetEntity: Suite::class)]
     private $suite;
 
+    
+  
+
     public function __construct()
     {
-        $this->reservations = new ArrayCollection();
+        
         $this->suite = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,8 +150,7 @@ class Hotel
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->name;
-    }
+   
+
+     
 }

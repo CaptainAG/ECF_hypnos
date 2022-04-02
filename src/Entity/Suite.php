@@ -246,7 +246,10 @@ class Suite
 
 
   
-    
+    public function __toString(): string
+    {
+        return $this->title;
+    }
 
     
 }

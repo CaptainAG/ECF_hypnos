@@ -19,20 +19,21 @@ class Reservation
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'reservations')]
     private $user;
 
-    #[ORM\Column(type: 'date')]
+    #[ORM\Column(type: 'date', nullable: true)]
     private $startDate;
 
-    #[ORM\Column(type: 'date')]
+    #[ORM\Column(type: 'date' ,nullable: true)]
     private $endDate;
 
     #[ORM\ManyToOne(targetEntity: Suite::class, inversedBy: 'reservations')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private $suite;
 
-    
+    #[ORM\ManyToOne(targetEntity: Hotel::class, inversedBy: 'reservations')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $hotel;
 
-   
-
+  
     public function getId(): ?int
     {
         return $this->id;
@@ -88,19 +89,19 @@ class Reservation
         $this->suite = $suite;
 
         return $this;
+        
     }
 
-   
+    public function getHotel(): ?Hotel
+    {
+        return $this->hotel;
+    }
 
-    
+    public function setHotel(?Hotel $hotel): self
+    {
+        $this->hotel = $hotel;
 
-    
-
-    
-    
-
-   
-
-
+        return $this;
+    }
     
 }

@@ -81,6 +81,22 @@ class ReservationRepository extends ServiceEntityRepository
         return $query->getQuery()->getSingleScalarResult();
     }
 
+    public function disponible($suite,$startDate,$endDate){
+       
+        $query= $this->createQueryBuilder('r')
+            ->select('r')
+            ->where('r.suite = :suite')
+            ->setParameter('suite', $suite )
+            ->andWhere('r.startDate BETWEEN :startDate AND :endDate')
+            ->setParameter('startDate', $startDate )
+            ->setParameter('endDate', $endDate );
+            
+        ;
+        
+        return $query->getQuery()->getResult();
+    }
+
+
     /*
 
     public function free($suite,$start,$end){

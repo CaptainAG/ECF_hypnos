@@ -47,7 +47,7 @@
                         {% for reservation in reservations %}
                             <tr>
                                 <td>{{ reservation.id }}</td>
-                                <td>{{ reservation.suite.hotel }}</td>
+                                <td>{{ reservation.hotel.name }}</td>
                                 <td>{{ reservation.suite.title }}</td>
                                 <td>{{ reservation.startDate ? reservation.startDate|date('d-M-Y') : '' }}</td>
                                 <td>{{ reservation.endDate ? reservation.endDate|date('d-M-Y') : '' }}</td>
@@ -63,7 +63,7 @@
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="6">no records found</td>
+                                <td colspan="6">Vous n'avez pas de réservation</td>
                             </tr>
                         {% endfor %}
                         </tbody>
