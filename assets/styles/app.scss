@@ -384,7 +384,15 @@ td{
 .container_show_suite{
     display: flex;
     justify-content: center;
-    margin-bottom: 9rem;
+    margin-bottom: 26rem;
+}
+
+@media screen and (min-width: 768px){
+
+    .container_show_suite{
+        margin-bottom: 20rem;
+    }
+
 }
 
 .container_show_suite>.div_show_suite{
@@ -413,9 +421,20 @@ td{
     color: #000;
  }
 
- .spacer{
-     height: 11rem;
- }
+
+.img_suite{
+    object-fit: contain;
+    width: 100%;
+}
+
+.swiper_img{
+    max-width: 500px;
+    max-height: 400px;
+    object-fit: contain;
+    width: 100%;
+}
+
+
 
 /* -----Page New / Edit -----*/
 
@@ -423,6 +442,16 @@ td{
     background-color: #000;
     min-height: calc(100vh - 170px);
 }
+/* ------------------------------------------------------------------------------------------ GALERIE --------------*/
+
+/* -----Page index -----*/
+
+.galerie_img_index{
+    width: 15rem ;
+}
+
+
+
 
 /* ------------------------------------------------------------------------------------------ DEMANDE------------------------------------------------------------------------------------------------------- */
 /* -----Page show -----*/
@@ -526,11 +555,7 @@ td{
     margin-bottom: 10px;
 }
 
-@media screen and (min-width: 320px)and (max-width:1023px){
 
-   
-
-}
 
 /* ------------------------------------------------------------------------------------------ FORM------------------------------------------------------------------------------------------------------- */
 .col-form{
@@ -556,8 +581,8 @@ td{
 
 .white{
     background-color: #ffff;
-    height: 60%;
-    width: 60%;
+    height: 70%;
+    width: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -565,6 +590,8 @@ td{
 
 .class_form{
     color: #000;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 .class_form>form{
@@ -572,6 +599,14 @@ td{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.class_form>form>.vich-image>input{
+    width:  152px !important;
+}
+
+.class_form>form>#gallerie_Suite{
+    width:190px; 
 }
 
 .class_form>form>input{
@@ -601,11 +636,7 @@ td{
     margin-bottom: 10px;
 }
 
-@media screen and (min-width: 320px)and (max-width:1023px){
 
-   
-
-}
 
 .text_area_form{
     height: 8rem;

@@ -45,6 +45,18 @@ class GallerieRepository extends ServiceEntityRepository
         }
     }
 
+    public function findBySuiteID($id){
+       
+        $query= $this->createQueryBuilder('g')
+            ->select('g')
+            ->where('g.Suite = :suite')
+            ->setParameter('suite', $id );
+            
+        ;
+        
+        return $query->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Gallerie[] Returns an array of Gallerie objects
     //  */

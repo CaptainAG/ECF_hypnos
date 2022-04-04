@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220401083242 extends AbstractMigration
+final class Version20220404075958 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,14 @@ final class Version20220401083242 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE reservation DROP hotel_id');
+        $this->addSql('ALTER TABLE gallerie CHANGE image image_name VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE suite DROP is_reserved');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE reservation ADD hotel_id INT NOT NULL');
+        $this->addSql('ALTER TABLE gallerie CHANGE image_name image VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE suite ADD is_reserved TINYINT(1) DEFAULT NULL');
     }
 }

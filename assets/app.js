@@ -15,10 +15,47 @@ import { Tooltip, Toast, Popover } from 'bootstrap';
 // start the Stimulus application
 import './bootstrap';
 
+  // import Swiper bundle with all modules installed
+  import Swiper from 'swiper/bundle';
 
-var coucou = "coucou";
+  // import styles bundle
+  import 'swiper/css/bundle';
 
-console.log(coucou)
+ 
+  $(document).ready(function(){
+    console.log('Jquery est installé ')
+  });
+
+
+  $(document).ready(function(){
+    var swiper = new Swiper('.swiper', {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        loop: true,
+        centeredSlides: true,
+        autoplay: {
+            delay: 4500,
+            disableOnInteraction: false,
+          },
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 24,
+            },
+            1200: {
+                slidesPerView: 3,
+                spaceBetween: 24,
+            },
+        },
+        // Navigation arrows
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+  });
+  
+
 
 
  // When sport gets selected ...
@@ -71,7 +108,7 @@ console.log(coucou)
                 url: '/reservation/verif',
                 data: data,
                 error: function(){
-                    console.log('Tu as merdé man !')
+                    console.log('error')
                 },
                 success: function(data){
                     console.log(data)

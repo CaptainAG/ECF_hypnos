@@ -7,7 +7,7 @@
  <div class="col-suite">
     <div class="container-xxl">
             <div class="img_show_suite py-5">
-                <img src="{{asset('/images/suite/' ~ suite.imageName )}}" alt="" class="">
+                <img src="{{asset('/images/suite/' ~ suite.imageName )}}" alt="Photo de la suite" class="">
             </div>
             <div class="container_show_suite">
                 <div class="div_show_suite">
@@ -26,7 +26,31 @@
                     </div>
                 </div>
             </div>
-            <div class="spacer">
+            <div class="container_suite my-5">
+                <h1 class="h4  text-center my-4"><u>{{ suite.title }}</u> </h1>
+                <div class="row justify-content-around py-4">
+                    <div class="col-md-5">
+                        <img src="{{asset('/img/suite.jpeg')}}" alt="Photo de la suite" class="img_suite">
+                    </div>
+                    <div class="col-md-5 d-flex align-items-center">
+                        <p> Sed laeditur hic coetuum magnificus splendor levitate paucorum incondita, ubi nati sunt non reputantium, sed tamquam indulta licentia vitiis ad errores lapsorum ac lasciviam. ut enim Simonides lyricus docet, beate perfecta ratione vieturo ante alia patriam esse convenit gloriosam. </p>
+                    </div> 
+                </div>
+            </div> 
+            <div class="container_suite_carousel  py-5">
+                <h2 class="h4 text-center"> Découvrez notre suite </h2>
+                               
+                <div class="swiper">
+                
+                    <div class="swiper-wrapper">
+                        {% for galerie  in suite.galerie %}  
+                        <div class="swiper-slide"> <img src="{{asset('/images/suite/' ~ galerie.imageName )}}" class="swiper_img" alt="Photo de la suite"> </div>
+                        {% endfor %}
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    
+                </div>
             </div> 
     </div>
 </div>

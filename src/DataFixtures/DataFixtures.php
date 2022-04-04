@@ -62,8 +62,6 @@ class DataFixtures extends Fixture
             $suite1 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
-                    ->setIsReserved($faker->randomElement(['0','1']))
-                    
                     ->setHotel($hotel1)
 
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
@@ -76,8 +74,8 @@ class DataFixtures extends Fixture
 
             for($j =1; $j <= 3; $j++){
                 $galerie= new Gallerie();
-                $galerie->setImage($faker->image('public/images/suite',500,400, 'suite',false))
-                        ->setSuite($suite1);
+                $galerie->setSuite($suite1)
+                        ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
 
                 $manager->persist($galerie);
             }
@@ -122,8 +120,6 @@ class DataFixtures extends Fixture
             $suite2 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
-                    ->setIsReserved($faker->randomElement(['0','1']))
-                    
                     ->setHotel($hotel2)
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
@@ -132,8 +128,8 @@ class DataFixtures extends Fixture
 
             for($j =1; $j <= 3; $j++){
                 $galerie= new Gallerie();
-                $galerie->setImage($faker->image('public/images/suite',500,400, 'suite',false))
-                        ->setSuite($suite2);
+                $galerie->setSuite($suite2)
+                        ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
 
                 $manager->persist($galerie);
             }
@@ -175,8 +171,6 @@ class DataFixtures extends Fixture
             $suite3 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
-                    ->setIsReserved($faker->randomElement(['0','1']))
-                    
                     ->setHotel($hotel3)
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
 
@@ -185,8 +179,8 @@ class DataFixtures extends Fixture
 
             for($j =1; $j <= 3; $j++){
                 $galerie= new Gallerie();
-                $galerie->setImage($faker->image('public/images/suite',500,400, 'suite',false))
-                        ->setSuite($suite3);
+                $galerie->setSuite($suite3)
+                        ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
 
                 $manager->persist($galerie);
             }
@@ -227,9 +221,7 @@ class DataFixtures extends Fixture
             $suite4 = new Suite();
             $suite4 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
-                    ->setPrice(50)
-                    ->setIsReserved($faker->randomElement(['0','1']))
-                    
+                    ->setPrice(50)                
                     ->setHotel($hotel4)
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
@@ -239,8 +231,8 @@ class DataFixtures extends Fixture
 
             for($j =1; $j <= 3; $j++){
                 $galerie= new Gallerie();
-                $galerie->setImage($faker->image('public/images/suite',500,400, 'suite',false))
-                        ->setSuite($suite4);
+                $galerie->setSuite($suite4)
+                        ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
 
                 $manager->persist($galerie);
             }
@@ -285,8 +277,6 @@ class DataFixtures extends Fixture
             $suite5 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
-                    ->setIsReserved($faker->randomElement(['0','1']))
-                    
                     ->setHotel($hotel5)
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
@@ -296,8 +286,8 @@ class DataFixtures extends Fixture
 
             for($j =1; $j <= 3; $j++){
                 $galerie= new Gallerie();
-                $galerie->setImage($faker->image('public/images/suite',500,400, 'suite',false))
-                        ->setSuite($suite5);
+                $galerie->setSuite($suite5)
+                        ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
 
                 $manager->persist($galerie);
             }
@@ -340,8 +330,6 @@ class DataFixtures extends Fixture
             $suite6 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
-                    ->setIsReserved($faker->randomElement(['0','1']))
-                    
                     ->setHotel($hotel6)
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
@@ -351,8 +339,8 @@ class DataFixtures extends Fixture
 
             for($j =1; $j <= 3; $j++){
                 $galerie= new Gallerie();
-                $galerie->setImage($faker->image('public/images/suite',500,400, 'suite',false))
-                        ->setSuite($suite6);
+                $galerie->setSuite($suite6)
+                        ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
 
                 $manager->persist($galerie);
             }
@@ -395,8 +383,6 @@ class DataFixtures extends Fixture
             $suite7 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
-                    ->setIsReserved($faker->randomElement(['0','1']))
-                    
                     ->setHotel($hotel7)
 
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
@@ -407,8 +393,8 @@ class DataFixtures extends Fixture
 
             for($j =1; $j <= 3; $j++){
                 $galerie= new Gallerie();
-                $galerie->setImage($faker->image('public/images/suite',500,400, 'suite',false))
-                        ->setSuite($suite7);
+                $galerie->setSuite($suite7)
+                        ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
 
                 $manager->persist($galerie);
             }

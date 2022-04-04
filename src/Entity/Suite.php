@@ -32,12 +32,7 @@ class Suite
     #[ORM\Column(type: 'float')]
     private $price;
 
-
-    #[ORM\Column(type: 'boolean', nullable: true)]
-    private $isReserved;
-
   
-
     #[ORM\ManyToOne(targetEntity: Hotel::class, inversedBy: 'suite')]
     private $hotel;
 
@@ -120,19 +115,6 @@ class Suite
         return $this;
     }
 
-    
-
-    public function getIsReserved(): ?bool
-    {
-        return $this->isReserved;
-    }
-
-    public function setIsReserved(?bool $isReserved): self
-    {
-        $this->isReserved = $isReserved;
-
-        return $this;
-    }
 
 
     public function getHotel(): ?Hotel
