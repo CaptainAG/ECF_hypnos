@@ -63,6 +63,7 @@ class DataFixtures extends Fixture
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
                     ->setHotel($hotel1)
+                    ->setLien('https://www.booking.com/')
 
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
 
@@ -120,6 +121,7 @@ class DataFixtures extends Fixture
             $suite2 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
+                    ->setLien('https://www.booking.com/')
                     ->setHotel($hotel2)
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
@@ -171,6 +173,7 @@ class DataFixtures extends Fixture
             $suite3 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
+                    ->setLien('https://www.booking.com/')
                     ->setHotel($hotel3)
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
 
@@ -221,7 +224,8 @@ class DataFixtures extends Fixture
             $suite4 = new Suite();
             $suite4 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
-                    ->setPrice(50)                
+                    ->setPrice(50)  
+                    ->setLien('https://www.booking.com/')              
                     ->setHotel($hotel4)
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
@@ -277,6 +281,7 @@ class DataFixtures extends Fixture
             $suite5 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
+                    ->setLien('https://www.booking.com/')
                     ->setHotel($hotel5)
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
@@ -330,6 +335,7 @@ class DataFixtures extends Fixture
             $suite6 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
+                    ->setLien('https://www.booking.com/')
                     ->setHotel($hotel6)
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));
                      
@@ -383,6 +389,7 @@ class DataFixtures extends Fixture
             $suite7 ->setTitle($faker->sentence($nbWords=2, $variableNbWords = true))
                     ->setDescription($faker->paragraph(2))
                     ->setPrice(50)
+                    ->setLien('https://www.booking.com/')
                     ->setHotel($hotel7)
 
                     ->setImageName($faker->image('public/images/suite',500,400, 'suite',false));

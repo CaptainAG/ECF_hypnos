@@ -57,6 +57,9 @@ class Suite
     #[ORM\OneToMany(mappedBy: 'suite', targetEntity: Reservation::class)]
     private $reservations;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $lien;
+
    
     
 
@@ -231,6 +234,18 @@ class Suite
     public function __toString(): string
     {
         return $this->title;
+    }
+
+    public function getLien(): ?string
+    {
+        return $this->lien;
+    }
+
+    public function setLien(string $lien): self
+    {
+        $this->lien = $lien;
+
+        return $this;
     }
 
     

@@ -53,7 +53,7 @@ class HotelController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_admin_hotel_show', methods: ['GET'])]
-    public function show(Hotel $hotel, SuiteRepository $suiteRepository): Response
+    public function show(Hotel $hotel): Response
     {
         
 

@@ -55,32 +55,29 @@ import './bootstrap';
       });
   });
   
-
-
-
- // When sport gets selected ...
+ 
  $(document).on('change','#reservation_hotel',function() {
     let $hotel = $('#reservation_hotel')
     let $startField= $('#reservation_startDate')
     let $endField= $('#reservation_endDate')
-    // ... retrieve the corresponding form.
+    
     let $form = $(this).closest('form');
-    // Simulate form data, but only include the selected sport value.
+    
     let data = {};
     data[$hotel.attr('name')] = $hotel.val();
     data[$startField.attr('name')] = $startField.val()
     data[$endField.attr('name')] = $endField.val()
-    // Submit data via AJAX to the form's action path.
+    
     $.ajax({
         url : $form.attr('action'),
         type: $form.attr('method'),
         data : data,
         complete: function(html) {
-        // Replace current position field ...
+       
         $('#reservation_suite').replaceWith($(html.responseText).find('#reservation_suite'))
         $('#reservation_startDate').replaceWith($(html.responseText).find('#reservation_startDate'))
         $('#reservation_endDate').replaceWith($(html.responseText).find('#reservation_endDate'))
-        // Position field now displays the appropriate positions.
+       
         }
     });
 });
@@ -130,6 +127,18 @@ import './bootstrap';
         });
     
     });
+
+
+    $(document).ready(function(){ 
+        $('#reservation_hotel').attr('disabled', 'disabled');
+
+        $(document).on('change','#reservation_endDate',function() {
+            $('#reservation_hotel').removeAttr('disabled');
+        });
+    });
+
+
+    
 
     
     

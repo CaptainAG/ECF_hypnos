@@ -20,8 +20,9 @@
                     <div class="div_show_suite_price my-4">
                         <p class="text-center">{{ suite.price }}  €</p>
                         <p class="text-center">La nuit </p>
-                        <div class="d-flex justify-content-center my-4">
-                            <a class="btn btn-primary" href="{{path('app_reservation_new')}}"> Réserver </a>
+                        <div class="d-flex flex-column justify-content-center align-items-center my-4">
+                            <div class="my-2"> <a class="btn btn-primary" href="{{path('app_reservation_new')}}"> Réserver </a> </div>
+                            <div class="my-2"> <a class="btn btn-secondary" href="{{ suite.lien }}"> Réserver via booking</a> </div>
                         </div>
                     </div>
                 </div>
