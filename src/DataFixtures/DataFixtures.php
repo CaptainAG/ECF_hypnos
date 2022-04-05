@@ -409,20 +409,20 @@ class DataFixtures extends Fixture
             
         }
 
-        //Création de réservation 
-        for($i =1; $i <= 5; $i++){
-            $reservation7= new Reservation();
+        // //Création de réservation 
+        // for($i =1; $i <= 5; $i++){
+        //     $reservation7= new Reservation();
 
             
 
-            $reservation7->setUser($this->getReference('user'.$i))
-                        ->setSuite($this->getReference('suite7'.$i))
-                        ->setHotel($this->getReference('hotel7'))
-                        ->setStartDate($faker->dateTimeBetween('-6 months','+1 year'))
-                        ->setEndDate($faker->dateTimeBetween('+1 year', '+2 year'));
+        //     $reservation7->setUser($this->getReference('user'.$i))
+        //                 ->setSuite($this->getReference('suite7'.$i))
+        //                 ->setHotel($this->getReference('hotel7'))
+        //                 ->setStartDate($faker->dateTimeBetween('-6 months','+1 year'))
+        //                 ->setEndDate($faker->dateTimeBetween('+1 year', '+2 year'));
             
-            $manager->persist($reservation7);
-        }
+        //     $manager->persist($reservation7);
+        // }
         
         
         

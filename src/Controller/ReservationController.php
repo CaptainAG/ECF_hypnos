@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Reservation;
+use App\Entity\Suite;
 use App\Form\ReservationType;
 use App\Repository\ReservationRepository;
+use Doctrine\Tests_PHP81\Persistence\Reflection\Suit;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -101,6 +103,42 @@ class ReservationController extends AbstractController
             'reservation' => $reservation,
             'form' => $form,
         ]);
+    }
+
+    #[Route('/{id}/new', name: 'app_reservation_new_r', methods: ['GET', 'POST'])]
+    public function newR(Request $request, ReservationRepository $reservationRepository,$id,Suite $suite): Response
+    {
+        
+        $user= $this->getUser();
+        
+
+        $suite->getId($id);
+        $hotel= $suite->getHotel();
+        $result=$reservationRepository->findByHotelId($hotel);
+
+        $r=count($result);
+
+        if($r < 1 ){
+            $reservation = new Reservation();
+            $reservation->setHotel($hotel);
+            $reservation->setSuite($suite);
+            $form = $this->createForm(ReservationType::class, $reservation);
+            $form->handleRequest($request);
+                if ($form->isSubmitted() && $form->isValid()) {
+                
+                    $reservation->setUser($user);
+                    $reservationRepository->add($reservation);
+                    return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
+                }
+        
+                return $this->renderForm('reservation/new.html.twig', [
+                    'reservation' => $reservation,
+                    'form' => $form,
+                ]);
+        }else{
+            return $this->redirectToRoute('app_reservation_new', [], Response::HTTP_SEE_OTHER);
+        }
+        
     }
 
 

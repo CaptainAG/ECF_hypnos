@@ -40,6 +40,7 @@
                         </div>
                         <div class="d-flex flex-column flex-md-row justify-content-between align-items-center footer_card_suite">
                             <a href="{{path('app_suite_show',{'id': suite.id})}}" >Découvrir <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="rgba(204,173,0,1)"/></svg> </a>
+                            <a class="btn btn-primary" href="{{path('app_reservation_new_r',{'id': suite.id})}}" >Réserver </a>
                             <div >
                                 <p>{{suite.price}}  €</p>
                                 <p>La nuit </p>

@@ -57,6 +57,20 @@ class ReservationRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
+    public function findByHotelId($id){
+       
+        $query= $this->createQueryBuilder('d')
+            ->select('d')
+            ->where('d.hotel = :hotel')
+            ->setParameter('hotel', $id );
+            
+        ;
+        
+        return $query->getQuery()->getResult();
+    }
+
+
+
     public function getPaginatedReservations($page, $limit,$id){
         $query= $this->createQueryBuilder('r')
             ->select('r')
