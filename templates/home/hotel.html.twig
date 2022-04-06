@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Nos hôtel{% endblock %}
 
 {% block body %}
     {%  include 'nav.html.twig' %}
@@ -14,7 +14,7 @@
             {% for hotel in hotels %}
                    <div class="col-md-6 col-lg-4 col-xl-3"> 
                         <div class="card">
-                            <img src="{{asset('img/hotel-lux.jpeg')}}" class="card-img-top " alt="...">
+                            <img src="{{asset('img/hotel-lux.jpeg')}}" class="card-img-top " alt="Image de l'hotel">
                             <div class="card-body">
                                 <h5 class="card-title text-center title_hotel">{{hotel.name}}</h5>
                                 <div class="button_hotel">

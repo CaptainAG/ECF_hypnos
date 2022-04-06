@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gallerie index{% endblock %}
+{% block title %}Gallerie{% endblock %}
 
 {% block body %}
 {%  include 'nav.html.twig' %}
@@ -22,7 +22,7 @@
                 <tbody>
                 {% for gallerie in galleries %}
                     <tr>
-                        <td><img src="{{asset('/images/suite/' ~ gallerie.imageName )}}" alt="" class="galerie_img_index"></td>
+                        <td><img src="{{asset('/images/suite/' ~ gallerie.imageName )}}" alt="Image montrant les pièces de la suite" class="galerie_img_index"></td>
                         <td>
                             {{ include('gallerie/_delete_form.html.twig') }}
                         </td>
