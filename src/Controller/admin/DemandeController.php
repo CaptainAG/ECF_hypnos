@@ -11,30 +11,36 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('admin/demande')]
+/**
+ * @Route("admin/demande")
+ */
 class DemandeController extends AbstractController
 {
-    #[Route('/', name: 'app_admin_demande', methods: ['GET'])]
-    public function index(DemandeRepository $demandeRepository,Request $request): Response
+    /**
+     * @Route("/", name="app_admin_demande", methods={"GET"})
+     */
+    public function index(DemandeRepository $demandeRepository, Request $request): Response
     {
-        $limit=8;
-    
-        $page=(int)$request->query->get("page", 1);
+        $limit = 8;
 
-        $demande= $demandeRepository->getPaginatedDemandes($page,$limit);
+        $page = (int)$request->query->get("page", 1);
 
-        $total= $demandeRepository->getTotalDemandes();
+        $demande = $demandeRepository->getPaginatedDemandes($page, $limit);
+
+        $total = $demandeRepository->getTotalDemandes();
 
         return $this->render('demande/index.html.twig', [
             'demandes' => $demande,
-            'total'=> $total,
+            'total' => $total,
             'limit' => $limit,
             'page' => $page,
         ]);
     }
 
 
-    #[Route('/{id}', name: 'app_admin_demande_show', methods: ['GET'])]
+    /**
+     * @Route("/{id}", name="app_admin_demande_show", methods={"GET"})
+     */
     public function show(Demande $demande): Response
     {
         return $this->render('demande/show.html.twig', [
@@ -42,7 +48,9 @@ class DemandeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_demande_edit', methods: ['GET', 'POST'])]
+    /**
+     * @Route("/{id}/edit", name="app_demande_edit", methods= {"GET", "POST"})
+     */
     public function edit(Request $request, Demande $demande, DemandeRepository $demandeRepository): Response
     {
         $form = $this->createForm(DemandeType::class, $demande);
@@ -50,6 +58,7 @@ class DemandeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $demandeRepository->add($demande);
+
             return $this->redirectToRoute('app_admin_demande_new', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -59,17 +68,21 @@ class DemandeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_demande_delete', methods: ['POST'])]
+    /**
+     * @Route("/{id}", name="app_admin_demande_delete", methods= {"POST"})
+     */
     public function delete(Request $request, Demande $demande, DemandeRepository $demandeRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$demande->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $demande->getId(), $request->request->get('_token'))) {
             $demandeRepository->remove($demande);
         }
 
         return $this->redirectToRoute('app_admin_demande_new', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/processed/{id}', name: 'app_admin_demande_traite', methods: ['GET'])]
+    /**
+     * @Route("/processed/{id}", name="app_admin_demande_traite", methods={"GET"})
+     */
     public function activer(Demande $demande, EntityManagerInterface $entityManager): Response
     {
         $demande->setProcessed(($demande->getProcessed()) ? false : true);

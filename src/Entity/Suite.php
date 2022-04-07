@@ -9,8 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-#[ORM\Entity(repositoryClass: SuiteRepository::class)]
-
 /**
  * @Vich\Uploadable
  */
@@ -18,55 +16,66 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 class Suite
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    /**
+* @ORM\Id
+    * @ORM\GeneratedValue
+* @ORM\Column(type="integer")
+     */
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $title;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $description;
 
-    #[ORM\Column(type: 'float')]
+    /**
+     * @ORM\Column(type="float")
+     */
     private $price;
 
-  
-    #[ORM\ManyToOne(targetEntity: Hotel::class, inversedBy: 'suite')]
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Hotel::class, inversedBy="suite")
+     */
     private $hotel;
 
-    #[ORM\OneToMany(mappedBy: 'Suite', targetEntity: Gallerie::class)]
+    /**
+     * @ORM\OneToMany(mappedBy="Suite", targetEntity=Gallerie::class)
+     */
     private $galerie;
 
-    /**  
-     * @Vich\UploadableField(mapping="suite", fileNameProperty="imageName") 
-     * 
-     * @var File|null 
-     */ 
+    /**
+     * @Vich\UploadableField(mapping="suite", fileNameProperty="imageName")
+     *
+     * @var File|null
+     */
     private ?File $imageFile = null;
 
-    #[ORM\Column(type: 'string')]
+    /**
+     * @ORM\Column(type="string")
+     */
     private ?string $imageName = null;
 
-   
 
-    #[ORM\Column(type: 'datetime')]
+    /**
+     * @ORM\Column(type="datetime")
+     */
     private ?\DateTimeInterface $updatedAt = null;
 
-    #[ORM\OneToMany(mappedBy: 'suite', targetEntity: Reservation::class)]
+    /**
+     * @ORM\OneToMany(mappedBy="suite", targetEntity=Reservation::class)
+     */
     private $reservations;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $lien;
-
-   
-    
-
-   
-  
-
-
 
 
     public function __construct()
@@ -227,10 +236,10 @@ class Suite
         return $this;
     }
 
-    
 
 
-  
+
+
     public function __toString(): string
     {
         return $this->title;
@@ -248,5 +257,5 @@ class Suite
         return $this;
     }
 
-    
+
 }

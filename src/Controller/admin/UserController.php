@@ -12,22 +12,28 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-#[Route('/admin/user')]
+/**
+ * @Route("/admin/user")
+ */
 class UserController extends AbstractController
 {
-    #[Route('/', name: 'app_admin_user', methods: ['GET'])]
+    /**
+     * @Route("/", name="app_admin_user", methods={"GET"})
+     */
     public function index(UserRepository $userRepository): Response
     {
-        $user=$userRepository->gerant();
+        $user = $userRepository->gerant();
 
-        
+
         return $this->render('user/index.html.twig', [
             'users' => $user,
         ]);
     }
 
-    #[Route('/new', name: 'app_admin_user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request,UserPasswordHasherInterface $userPasswordHasher, UserRepository $userRepository): Response
+    /**
+     * @Route("/new", name="app_admin_user_new", methods= {"GET", "POST"})
+     */
+    public function new(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserRepository $userRepository): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -43,6 +49,7 @@ class UserController extends AbstractController
                     )
                 );
             $userRepository->add($user);
+
             return $this->redirectToRoute('app_admin_user', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -52,7 +59,9 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_user_show', methods: ['GET'])]
+    /**
+     * @Route("/{id}", name="app_admin_user_show", methods={"GET"})
+     */
     public function show(User $user): Response
     {
         return $this->render('user/show.html.twig', [
@@ -60,22 +69,23 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_admin_user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, UserRepository $userRepository,UserPasswordHasherInterface $userPasswordHasher): Response
+    /**
+     * @Route("/{id}/edit", name="app_admin_user_edit", methods= {"GET", "POST"})
+     */
+    public function edit(Request $request, User $user, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
-        
-        $pass= $user->getPassword();
 
-        $pa=$user->setPassword($pass);
+        $pass = $user->getPassword();
 
-       
+        $pa = $user->setPassword($pass);
 
-       
+
+
+
         if ($form->isSubmitted() && $form->isValid()) {
 
-            dd($pa);
             if($form->get('password')->getData() != null){
                 $user->setPassword(
                     $userPasswordHasher->hashPassword(
@@ -86,14 +96,15 @@ class UserController extends AbstractController
                 $userRepository->add($user);
             }else{
 
-                
+
                 $user->setPassword($pass);
-                
+
                 $userRepository->add($user);
-                
+
             }
-            
+
             $userRepository->add($user);
+
             return $this->redirectToRoute('app_admin_user', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -103,13 +114,16 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_user_delete', methods: ['POST'])]
+    /**
+     * @Route("/{id}", name="app_admin_user_delete", methods= {"POST"})
+     */
     public function delete(Request $request, User $user, UserRepository $userRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $userRepository->remove($user);
         }
 
         return $this->redirectToRoute('app_admin_user', [], Response::HTTP_SEE_OTHER);
     }
+
 }

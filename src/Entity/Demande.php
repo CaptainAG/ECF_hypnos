@@ -5,33 +5,51 @@ namespace App\Entity;
 use App\Repository\DemandeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: DemandeRepository::class)]
+/**
+ * @ORM\Entity(repositoryClass=DemandeRepository::class)
+ */
 class Demande
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $name;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $firstname;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $email;
 
-    #[ORM\ManyToOne(targetEntity: Sujet::class, inversedBy: 'demandes')]
+    /**
+     * @ORM\ManyToOne(targetEntity=Sujet::class, inversedBy="demandes")
+     */
     private $sujet;
 
-    #[ORM\Column(type: 'string', length: 500)]
+    /**
+     * @ORM\Column(type="string", length=500)
+     */
     private $message;
 
-    #[ORM\Column(type: 'datetime')]
+    /**
+     * @ORM\Column(type="datetime")
+     */
     private $CreatedAt;
 
-    #[ORM\Column(type: 'boolean')]
+    /**
+     * @ORM\Column(type="boolean")
+     */
     private $processed;
 
     public function getId(): ?int

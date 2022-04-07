@@ -7,39 +7,53 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: HotelRepository::class)]
+/**
+ * @ORM\Entity(repositoryClass=HotelRepository::class)
+ */
 class Hotel
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $name;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $city;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $adress;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $description;
 
 
-    #[ORM\OneToOne(mappedBy: 'hotel', targetEntity: User::class, cascade: ['persist', 'remove'])]
+    /**
+     * @ORM\OneToOne(mappedBy="hotel", targetEntity=User::class, cascade= {"persist", "remove"})
+     */
     private $user;
 
-    #[ORM\OneToMany(mappedBy: 'hotel', targetEntity: Suite::class)]
+    /**
+     * @ORM\OneToMany(mappedBy="hotel", targetEntity=Suite::class)
+     */
     private $suite;
 
-    
-  
 
     public function __construct()
     {
-        
+
         $this->suite = new ArrayCollection();
         $this->reservations = new ArrayCollection();
     }
@@ -97,7 +111,7 @@ class Hotel
         return $this;
     }
 
-    
+
     public function getUser(): ?User
     {
         return $this->user;
@@ -150,7 +164,5 @@ class Hotel
         return $this;
     }
 
-   
 
-     
 }

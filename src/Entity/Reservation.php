@@ -3,45 +3,54 @@
 namespace App\Entity;
 
 use App\Repository\ReservationRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ReservationRepository::class)]
+/**
+ * @ORM\Entity(repositoryClass=ReservationRepository::class)
+ */
 class Reservation
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
     private $id;
 
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'reservations')]
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reservations")
+     */
     private $user;
 
-    #[ORM\Column(type: 'date', nullable: true)]
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
     private $startDate;
 
-    #[ORM\Column(type: 'date' ,nullable: true)]
+    /**
+     * @ORM\Column(type="date" ,nullable=true)
+     */
     private $endDate;
 
-    #[ORM\ManyToOne(targetEntity: Suite::class, inversedBy: 'reservations')]
-    #[ORM\JoinColumn(nullable: true)]
+    /**
+     * @ORM\ManyToOne(targetEntity=Suite::class, inversedBy="reservations")]
+     * @ORM\JoinColumn(nullable=true)
+     */
     private $suite;
 
-    #[ORM\ManyToOne(targetEntity: Hotel::class, inversedBy: 'reservations')]
-    #[ORM\JoinColumn(nullable: false)]
+    /**
+     * @ORM\ManyToOne(targetEntity=Hotel::class, inversedBy="reservations")]
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $hotel;
 
-  
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    
-
-    
 
     public function getUser(): ?User
     {
@@ -89,7 +98,7 @@ class Reservation
         $this->suite = $suite;
 
         return $this;
-        
+
     }
 
     public function getHotel(): ?Hotel
@@ -103,5 +112,5 @@ class Reservation
 
         return $this;
     }
-    
+
 }
