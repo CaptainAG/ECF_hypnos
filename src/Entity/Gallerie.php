@@ -8,7 +8,8 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @Vich\Uploadable
+ * @ORM\Entity(repositoryClass=GallerieRepository::class)
+ *  @Vich\Uploadable
  */
 class Gallerie
 {
