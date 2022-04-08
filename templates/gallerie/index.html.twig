@@ -22,8 +22,8 @@
                 <tbody>
                 {% for gallerie in galleries %}
                     <tr>
-                        <td><img src="{{asset('/images/suite/' ~ gallerie.imageName )}}" alt="Image montrant les pièces de la suite" class="galerie_img_index"></td>
-                        <td>
+                        <td> <img src="{{asset('/images/suite/' ~ gallerie.imageName )}}" alt="Image montrant les pièces de la suite" class="galerie_img_index"></td>
+                        <td> 
                             {{ include('gallerie/_delete_form.html.twig') }}
                         </td>
                     </tr>
@@ -37,3 +37,4 @@
         </div>
     {%  include 'footer.html.twig' %}
 {% endblock %}
+

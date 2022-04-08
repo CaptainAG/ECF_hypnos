@@ -8,7 +8,7 @@
     <div class="container-xxl">
         <div class="py-5 container_header">
             <div class="img_show_hotel">
-                <img src="{{asset('img/hotel_lux2.jpeg')}}" class="Image montrant l'hotel">
+                <img src="{{ vich_uploader_asset(suite, 'imageFile') }}" alt="Photo de la suite" class="">
             </div>
             <div>
                 <h1>{{ hotel.name }} </h1>

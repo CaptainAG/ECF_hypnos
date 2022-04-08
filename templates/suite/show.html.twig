@@ -45,7 +45,7 @@
                 
                     <div class="swiper-wrapper">
                         {% for galerie  in suite.galerie %}  
-                        <div class="swiper-slide"> <img src="{{asset('/images/suite/' ~ galerie.imageName )}}" class="swiper_img" alt="Photo de la suite"> </div>
+                        <div class="swiper-slide">  <img src="{{ vich_uploader_asset(gallerie, 'imageFile') }}" alt="Photo de la suite" class="swiper_img"> </div>
                         {% endfor %}
                     </div>
                     <div class="swiper-button-prev"></div>
