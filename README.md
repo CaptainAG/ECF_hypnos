@@ -1,16 +1,16 @@
 # ECF_hypnos
-Description
+# Description
 
 Dépôt du projet Hotel.
 
-Les documents annexes sont disponibles sur le drive :
+# Les documents annexes sont disponibles sur le drive :
 
 Charte graphique
 Manuel d'utilisation
 Documentation technique
 
 
-Récupération du projet
+# Récupération du projet
 
 Utiliser GIT Clone pour récupérer le dépôt
 
@@ -33,10 +33,11 @@ php bin/console doctrine:migrations:migrate
 php bin/console doctrine:fixtures:load --no-interaction
 Utilisation
 
-Deux options pour lancer le serveur de développement PHP :
+# Deux options pour lancer le serveur de développement PHP :
 
 Si vous avez installé Symfony :
 symfony server:start
+
 Si vous utilisez Composer, il faut installer le Web Server Bundle :
 composer require symfony/web-server-bundle --dev
 php bin/console server:start
