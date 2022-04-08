@@ -34,13 +34,13 @@ class Reservation
     private $endDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Suite::class, inversedBy="reservations")]
+     * @ORM\ManyToOne(targetEntity=Suite::class, inversedBy="reservations")
      * @ORM\JoinColumn(nullable=true)
      */
     private $suite;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Hotel::class, inversedBy="reservations")]
+     * @ORM\ManyToOne(targetEntity=Hotel::class, inversedBy="reservations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $hotel;

@@ -50,6 +50,11 @@ class Hotel
      */
     private $suite;
 
+    /**
+     * @ORM\OneToMany(mappedBy="hotel", targetEntity=Reservation::class)
+     */
+    private $reservations;
+
 
     public function __construct()
     {
@@ -158,6 +163,36 @@ class Hotel
             // set the owning side to null (unless already changed)
             if ($suite->getHotel() === $this) {
                 $suite->setHotel(null);
+            }
+        }
+
+        return $this;
+    }
+
+     /**
+     * @return Collection<int, Suite>
+     */
+    public function getReservation(): Collection
+    {
+        return $this->reservation;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservation->contains($reservation)) {
+            $this->reservation[] = $reservation;
+            $reservation->setHotel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->suite->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getHotel() === $this) {
+                $reservation->setHotel(null);
             }
         }
 
