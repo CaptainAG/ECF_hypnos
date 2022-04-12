@@ -563,8 +563,8 @@ class DataFixtures extends Fixture
                     ->setEmail($faker->email)
                     ->setSujet($sujet1)
                     ->setCreatedAt($faker->dateTimeBetween('-10 week', '-1 week'))
-                    ->setProcessed($faker->randomElement(['0','1']));
-                    //->setMessage($faker->paragraph());
+                    ->setProcessed($faker->randomElement(['0','1']))
+                    ->setMessage($faker->paragraph());
                      
 
             $manager->persist($demande);
@@ -579,8 +579,8 @@ class DataFixtures extends Fixture
                     ->setEmail($faker->email)
                     ->setSujet($sujet2)
                     ->setCreatedAt($faker->dateTimeBetween('-10 week', '-1 week'))
-                    ->setProcessed($faker->randomElement(['0','1']));
-                   // ->setMessage($faker->paragraph());
+                    ->setProcessed($faker->randomElement(['0','1']))
+                    ->setMessage($faker->paragraph());
                      
 
             $manager->persist($demande);
@@ -595,8 +595,8 @@ class DataFixtures extends Fixture
                     ->setEmail($faker->email)
                     ->setSujet($sujet3)
                     ->setCreatedAt($faker->dateTimeBetween('-10 week', '-1 week'))
-                    ->setProcessed($faker->randomElement(['0','1']));
-                    //->setMessage($faker->paragraph());
+                    ->setProcessed($faker->randomElement(['0','1']))
+                    ->setMessage($faker->paragraph());
                      
 
             $manager->persist($demande);
@@ -611,8 +611,8 @@ class DataFixtures extends Fixture
                     ->setEmail($faker->email)
                     ->setSujet($sujet4)
                     ->setCreatedAt($faker->dateTimeBetween('-10 week', '-1 week'))
-                    ->setProcessed($faker->randomElement(['0','1']));
-                    //->setMessage($faker->paragraph());
+                    ->setProcessed($faker->randomElement(['0','1']))
+                    ->setMessage($faker->paragraph());
                      
 
             $manager->persist($demande);
