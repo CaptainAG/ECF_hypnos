@@ -16,7 +16,11 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress",
+<<<<<<< HEAD
         "postinstall": "encore production --progress"
+=======
+        "heroku-postbuild": "encore production --progress"
+>>>>>>> 38c63309b4aef5abee58d4354c796fe98f3982ab
     },
     "dependencies": {
         "@popperjs/core": "^2.11.5",
@@ -29,5 +33,10 @@
     "engines": {
         "node": "14.17.6",
         "npm" : "8.3.0"
+<<<<<<< HEAD
         }
+=======
+    }
+
+>>>>>>> 38c63309b4aef5abee58d4354c796fe98f3982ab
 }
