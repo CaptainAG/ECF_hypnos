@@ -118,8 +118,8 @@ class DataFixtures extends Fixture
 
             
 
-            $reservation1->setUser($this->getReference($user1))
-                        ->setSuite($this->getReference('suite1'.$i))
+            $reservation1->setUser($user1)
+                        ->setSuite($suite1)
                         ->setHotel($this->getReference('hotel1'))
                         ->setStartDate($faker->dateTimeBetween('-1 year','-6 months'))
                         ->setEndDate($faker->dateTimeBetween('-6 months', '+1 year'));
@@ -183,13 +183,13 @@ class DataFixtures extends Fixture
             $manager->persist($reservation2);
         }
 
-        //Création de réservation User de démo
+       // Création de réservation User de démo
         $reservation2= new Reservation();
 
             
 
-            $reservation2->setUser($this->getReference($user1))
-                        ->setSuite($this->getReference('suite2'.$i))
+            $reservation2->setUser($user1)
+                        ->setSuite($suite2)
                         ->setHotel($this->getReference('hotel2'))
                         ->setStartDate($faker->dateTimeBetween('-6 months','+1 year'))
                         ->setEndDate($faker->dateTimeBetween('+1 year', '+2 year'));
@@ -253,8 +253,8 @@ class DataFixtures extends Fixture
 
             
 
-         $reservation3->setUser($this->getReference($user1))
-                     ->setSuite($this->getReference('suite3'.$i))
+         $reservation3->setUser($user1)
+                    ->setSuite($suite3)
                      ->setHotel($this->getReference('hotel3'))
                      ->setStartDate($faker->dateTimeBetween('-1 year','-6 months'))
                      ->setEndDate($faker->dateTimeBetween('-6 months', '+1 year'));
@@ -319,8 +319,8 @@ class DataFixtures extends Fixture
 
             
 
-        $reservation4->setUser($this->getReference($user1))
-                    ->setSuite($this->getReference('suite4'.$i))
+        $reservation4->setUser($user1)
+                    ->setSuite($suite4)
                     ->setHotel($this->getReference('hotel4'))
                     ->setStartDate($faker->dateTimeBetween('-6 months','+1 year'))
                     ->setEndDate($faker->dateTimeBetween('+1 year', '+2 year'));
@@ -374,7 +374,7 @@ class DataFixtures extends Fixture
 
             
 
-            $reservation5->setUser($this->getReference('user'.$i))
+            $reservation5->setUser($user1)
                         ->setSuite($this->getReference('suite5'.$i))
                         ->setHotel($this->getReference('hotel5'))
                         ->setStartDate($faker->dateTimeBetween('-1 year','-6 months'))
@@ -388,8 +388,8 @@ class DataFixtures extends Fixture
 
             
 
-         $reservation5->setUser($this->getReference($user1))
-                     ->setSuite($this->getReference('suite5'.$i))
+         $reservation5->setUser($user1)
+                     ->setSuite($suite5)
                      ->setHotel($this->getReference('hotel5'))
                      ->setStartDate($faker->dateTimeBetween('-1 year','-6 months'))
                      ->setEndDate($faker->dateTimeBetween('-6 months', '+1 year'));
@@ -455,8 +455,8 @@ class DataFixtures extends Fixture
 
             
 
-         $reservation6->setUser($this->getReference($user1))
-                     ->setSuite($this->getReference('suite6'.$i))
+         $reservation6->setUser($user1)
+                     ->setSuite($suite6)
                      ->setHotel($this->getReference('hotel6'))
                      ->setStartDate($faker->dateTimeBetween('-6 months','+1 year'))
                      ->setEndDate($faker->dateTimeBetween('+1 year', '+2 year'));
