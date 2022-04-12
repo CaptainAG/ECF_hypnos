@@ -20,7 +20,7 @@ final class Version20220324115945 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE user ADD hotel_id INT DEFAULT NULL');
+        //$this->addSql('ALTER TABLE user ADD hotel_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D6493243BB18 FOREIGN KEY (hotel_id) REFERENCES hotel (id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D6493243BB18 ON user (hotel_id)');
     }
