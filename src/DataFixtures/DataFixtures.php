@@ -47,8 +47,8 @@ class DataFixtures extends Fixture
         $user1 ->setEmail('fakeuser@gmail.com');
         $user1 ->setRoles(['ROLE_USER']);
         $user1 ->setPassword('$2y$10$Htv/9eNxF6Rk8leKDFYcHO28oCi5wRFnies8sGwut0fPAvJc05Ph.');
-        $user1 ->setName('Maxine');
-        $user1 ->setFirstname('Dupont');
+        $user1 ->setName('Dupont');
+        $user1 ->setFirstname('Maxime');
         $user1 ->setIsVerified('1');
 
 
