@@ -42,6 +42,19 @@ class DataFixtures extends Fixture
         }
 
 
+        //USER DE DEMO
+        $user1= new User();
+        $user1 ->setEmail('fakeuser@gmail.com');
+        $user1 ->setRoles(['ROLE_USER']);
+        $user1 ->setPassword('$2y$10$Htv/9eNxF6Rk8leKDFYcHO28oCi5wRFnies8sGwut0fPAvJc05Ph.');
+        $user1 ->setName('Maxine');
+        $user1 ->setFirstname('Dupont');
+        $user1 ->setIsVerified('1');
+
+
+        $manager->persist($user1);
+
+
         //HOTEL1
         $hotel1= new Hotel();
         $hotel1 ->setName('hypnos La Rochelle');
@@ -99,6 +112,22 @@ class DataFixtures extends Fixture
             $manager->persist($reservation1);
         }
 
+        //Création de réservation User de démo
+
+        $reservation1= new Reservation();
+
+            
+
+            $reservation1->setUser($this->getReference($user1))
+                        ->setSuite($this->getReference('suite1'.$i))
+                        ->setHotel($this->getReference('hotel1'))
+                        ->setStartDate($faker->dateTimeBetween('-1 year','-6 months'))
+                        ->setEndDate($faker->dateTimeBetween('-6 months', '+1 year'));
+            
+            $manager->persist($reservation1);
+
+
+
         
         
 
@@ -154,6 +183,19 @@ class DataFixtures extends Fixture
             $manager->persist($reservation2);
         }
 
+        //Création de réservation User de démo
+        $reservation2= new Reservation();
+
+            
+
+            $reservation2->setUser($this->getReference($user1))
+                        ->setSuite($this->getReference('suite2'.$i))
+                        ->setHotel($this->getReference('hotel2'))
+                        ->setStartDate($faker->dateTimeBetween('-6 months','+1 year'))
+                        ->setEndDate($faker->dateTimeBetween('+1 year', '+2 year'));
+            
+            $manager->persist($reservation2);
+
         //HOTEL3
         $hotel3= new Hotel();
         $hotel3 ->setName('hypnos Canne');
@@ -205,6 +247,19 @@ class DataFixtures extends Fixture
             
             $manager->persist($reservation3);
         }
+
+         //Création de réservation User de démo
+         $reservation3= new Reservation();
+
+            
+
+         $reservation3->setUser($this->getReference($user1))
+                     ->setSuite($this->getReference('suite3'.$i))
+                     ->setHotel($this->getReference('hotel3'))
+                     ->setStartDate($faker->dateTimeBetween('-1 year','-6 months'))
+                     ->setEndDate($faker->dateTimeBetween('-6 months', '+1 year'));
+         
+         $manager->persist($reservation3);
 
         //HOTEL4
         $hotel4= new Hotel();
@@ -258,6 +313,19 @@ class DataFixtures extends Fixture
             
             $manager->persist($reservation4);
         }
+
+        //Création de réservation User de démo
+        $reservation4= new Reservation();
+
+            
+
+        $reservation4->setUser($this->getReference($user1))
+                    ->setSuite($this->getReference('suite4'.$i))
+                    ->setHotel($this->getReference('hotel4'))
+                    ->setStartDate($faker->dateTimeBetween('-6 months','+1 year'))
+                    ->setEndDate($faker->dateTimeBetween('+1 year', '+2 year'));
+        
+        $manager->persist($reservation4);
         
 
        
@@ -315,6 +383,19 @@ class DataFixtures extends Fixture
             $manager->persist($reservation5);
         }
 
+         //Création de réservation User de démo
+         $reservation5= new Reservation();
+
+            
+
+         $reservation5->setUser($this->getReference($user1))
+                     ->setSuite($this->getReference('suite5'.$i))
+                     ->setHotel($this->getReference('hotel5'))
+                     ->setStartDate($faker->dateTimeBetween('-1 year','-6 months'))
+                     ->setEndDate($faker->dateTimeBetween('-6 months', '+1 year'));
+         
+         $manager->persist($reservation5);
+
         //HOTEL6
         $hotel6= new Hotel();
         $hotel6 ->setName('hypnos Strasbourg');
@@ -369,6 +450,19 @@ class DataFixtures extends Fixture
             $manager->persist($reservation6);
         }
 
+         //Création de réservation User de démo
+         $reservation6= new Reservation();
+
+            
+
+         $reservation6->setUser($this->getReference($user1))
+                     ->setSuite($this->getReference('suite6'.$i))
+                     ->setHotel($this->getReference('hotel6'))
+                     ->setStartDate($faker->dateTimeBetween('-6 months','+1 year'))
+                     ->setEndDate($faker->dateTimeBetween('+1 year', '+2 year'));
+         
+         $manager->persist($reservation6);
+
         //HOTEL7
         $hotel7= new Hotel();
         $hotel7 ->setName('hypnos Lyon');
@@ -407,24 +501,7 @@ class DataFixtures extends Fixture
             }
 
             
-        }
-
-        // //Création de réservation 
-        // for($i =1; $i <= 5; $i++){
-        //     $reservation7= new Reservation();
-
-            
-
-        //     $reservation7->setUser($this->getReference('user'.$i))
-        //                 ->setSuite($this->getReference('suite7'.$i))
-        //                 ->setHotel($this->getReference('hotel7'))
-        //                 ->setStartDate($faker->dateTimeBetween('-6 months','+1 year'))
-        //                 ->setEndDate($faker->dateTimeBetween('+1 year', '+2 year'));
-            
-        //     $manager->persist($reservation7);
-        // }
-        
-        
+        }        
         
 
         //ADMIN
