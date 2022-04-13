@@ -72,36 +72,32 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}/edit", name="app_admin_user_edit", methods= {"GET", "POST"})
      */
-    public function edit(Request $request, User $user, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
+    public function edit(Request $request, User $user, UserRepository $userRepository, $id,UserPasswordHasherInterface $userPasswordHasher): Response
     {
+        $pass=$user->getPassword($id);
+        
+        $user->setPassword($pass);
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
-        $pass = $user->getPassword();
-
-        $pa = $user->setPassword($pass);
-
-
-
+        dump($form);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            if($form->get('password')->getData() != null){
-                $user->setPassword(
-                    $userPasswordHasher->hashPassword(
-                            $user,
-                            $form->get('password')->getData()
-                        )
-                    );
-                $userRepository->add($user);
-            }else{
+            // if($form->get('password')->getData() != null){
+            //     $user->setPassword(
+            //         $userPasswordHasher->hashPassword(
+            //                 $user,
+            //                 $form->get('password')->getData()
+            //             )
+            //         );
+            //     $userRepository->add($user);
+            // }else{
+            //     $user->setPassword($pass);
 
+            //     $userRepository->add($user);
 
-                $user->setPassword($pass);
-
-                $userRepository->add($user);
-
-            }
+            // }
 
             $userRepository->add($user);
 

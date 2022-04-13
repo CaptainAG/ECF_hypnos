@@ -31,11 +31,11 @@ class UserType extends AbstractType
                 'attr' => ['placeholder' => 'Email'],
                 'label'=> ''
             ])
-            ->add('password',PasswordType::class,[
-                'attr' => ['placeholder' => 'Mot de passe'],
-                'label'=> '',
-                'required' => false,
-            ])
+            // ->add('password',PasswordType::class,[
+            //     'attr' => ['placeholder' => 'Mot de passe'],
+            //     'label'=> '',
+            //     'required' => false,
+            // ])
            
             ->add('hotel',EntityType::class,[
                 'class' => Hotel::class,
